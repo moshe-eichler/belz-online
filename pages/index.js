@@ -36,7 +36,7 @@ export async function getServerSideProps(ctx) {
     let { DEV_URL, PROD_URL } = process.env;
 
     // request members from api
-    let response = await fetch(encodeURI('https://anash-belz.vercel.app/api/members'));
+    let response = await fetch(encodeURI('https://anash-belz.vercel.app/api/members?first_name=משה יוסף'));
     // extract the data
     let data = await response.json();
     console.log(data)
