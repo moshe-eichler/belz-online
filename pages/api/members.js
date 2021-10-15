@@ -2,21 +2,21 @@ const { connectToDatabase } = require('../../lib/mongodb');
 const ObjectId = require('mongodb').ObjectId;
 const url = require('url');
 
-export default async function getPosts(req,res){
+export default async function getMembers(req,res){
     const queryObject = url.parse(req.url, true).query;
     console.log(queryObject)
     try {
         // connect to the database
         let { db } = await connectToDatabase();
-        // fetch the posts
-        let posts = await db
+        // fetch the members
+        let members = await db
             .collection('anash_belz')
             .find(queryObject)
             .sort({ published: -1 })
             .toArray();
-        // return the posts
+        // return the members
         return res.json({
-            message: JSON.parse(JSON.stringify(posts)),
+            message: JSON.parse(JSON.stringify(members)),
             success: true,
         });
     } catch (error) {

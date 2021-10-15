@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
 import Nav from '../components/Nav';
-import PostCard from '../components/PostCard';
+import MemberCard from '../components/MemberCard';
 import styles from '../styles/Home.module.css';
 
-export default function Home({ posts }) {
+export default function Home({ members }) {
     return (
         <div>
             <Head>
@@ -15,12 +15,12 @@ export default function Home({ posts }) {
 
             <main>
                 <div className={styles.container}>
-                    {posts.length === 0 ? (
-                        <h2>No added posts</h2>
+                    {members.length === 0 ? (
+                        <h2>No added members</h2>
                     ) : (
                         <ul>
-                            {posts.map((post, i) => (
-                                <PostCard post={post} key={i} />
+                            {members.map((post, i) => (
+                                <MemberCard post={post} key={i} />
                             ))}
                         </ul>
                     )}
@@ -35,15 +35,15 @@ export async function getServerSideProps(ctx) {
     let dev = process.env.NODE_ENV !== 'production';
     let { DEV_URL, PROD_URL } = process.env;
 
-    // request posts from api
-    let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/posts`);
+    // request members from api
+    let response = await fetch(encodeURI(`${dev ? DEV_URL : PROD_URL}/api/members`));
     // extract the data
-    console.log(response)
     let data = await response.json();
+    console.log(data)
 
     return {
         props: {
-            posts: data['message'],
+            members: data['message'],
         },
     };
 }
