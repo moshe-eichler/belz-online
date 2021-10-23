@@ -13,7 +13,7 @@ export default function Nav() {
                 </li>
                 <li>
                     <Link href="/api/members">
-                        <a>Add post</a>
+                        <a>Get Json</a>
                     </Link>
                 </li>
             </ul>

@@ -2,9 +2,8 @@ const { connectToDatabase } = require('../../lib/mongodb');
 const ObjectId = require('mongodb').ObjectId;
 const url = require('url');
 
-export default async function getMembers(req,res){
+export default async function getMembers(req, res){
     const queryObject = url.parse(req.url, true).query;
-    console.log(queryObject)
     try {
         // connect to the database
         let { db } = await connectToDatabase();
@@ -12,7 +11,8 @@ export default async function getMembers(req,res){
         let members = await db
             .collection('anash_belz')
             .find(queryObject)
-            .sort({ published: -1 })
+            .sort({ family_name: 1, first_name: 1})
+            .limit(100)
             .toArray();
         // return the members
         return res.json({

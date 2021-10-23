@@ -54,6 +54,7 @@ export default function MemberCard({ post }) {
         <>
             <div dir='rtl'>
                 <li>
+                <hr />
                     <span>{post.title + ' ' +  post.first_name + ' ' + post.family_name}</span>
                     <br />
                     <span>{'כתובת: ' + post.street + ' ' + post.number}</span>
@@ -69,7 +70,6 @@ export default function MemberCard({ post }) {
                     <span>{'בן: ' + post.father}</span>
                     <br />
                     <span>{'הערות: ' + post.notes}</span>
-                    <hr />
                 </li>
             </div>
         </>
