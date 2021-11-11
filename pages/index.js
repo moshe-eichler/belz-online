@@ -1,57 +1,38 @@
 import { useState } from "react";
-import ReactDOM from "react-dom";
 import Head from 'next/head';
-
-import Nav from '../components/Nav';
-import Table from '../components/Table';
+import List from '../components/List';
 import styles from '../styles/Home.module.css';
 
-function useInput({ type /*...*/ }) {
-    const [value, setValue] = useState("");
-    const input = <input value={value} onChange={e => setValue(e.target.value)} type={type} />;
-    return [value, input];
-}
-
-export default function Home({ members }) {
-    // const [username, userInput] = useInput({ type: "text" });
-    // const [password, passwordInput] = useInput({ type: "text" });
-
+export default function Home() {
+    
     const [fName, setfName] = useState('');
     const [lName, setlName] = useState('');
     const [city, setCity] = useState('');
-    const [phone, setPhone] = useState('');
+    const [phone, setPhone] = useState('');    
 
-    const submitValue = async () => {
-        const params = {
-            'first_name' : fName,
-            'family_name' : lName,
-            'city' : city,
-            'mobile_phone' : phone
-        }
+    // function setFilters() {
+    //     const filters = {
+    //         'first_name' : fName,
+    //         'family_name' : lName,
+    //         'city' : city,
+    //         'mobile_phone' : phone
+    //     }
+    // }
 
-        const url = new URL('https://anash.vercel.app/api/members');
-        url.search = new URLSearchParams(Object.entries(params).reduce((a,[k,v]) => (v ? (a[k]=v, a) : a), {})).toString();
+    const filters = {
+        'first_name' : fName,
+        'family_name' : lName,
+        'city' : city,
+        'mobile_phone' : phone
+    };
 
-        console.log(url)
-
-        let response = await fetch(url)
-        let data = await response.json();
-
-        console.log(data['message'])
-        console.log(document.getElementById('table'))
-        let element = <Table members={data['message']} />
-        console.log(element)
-        ReactDOM.render(element, document.getElementById('table'));
-        
-    }
-   
     return (
         <div dir="rtl">
             <Head>
                 <title>Home</title>
             </Head>
 
-            <Nav />
+            {/* <Nav /> */}
 
             <main>
                 <div className={styles.search}>
@@ -60,29 +41,53 @@ export default function Home({ members }) {
                     <input type="text" placeholder="שם משפחה" onChange={e => setlName(e.target.value)} />
                     <input type="text" placeholder="עיר" onChange={e => setCity(e.target.value)} />
                     <input type="text" placeholder="טלפון" onChange={e => setPhone(e.target.value)} />
-                    <button onClick={submitValue}>Submit</button>
+                    <button onClick={() => setFilters()}>Submit</button>
                 </div>
                 <div className={styles.container} id="table">
-                    <Table members={members} />
+                    <List filters={filters}/>
                 </div>
             </main>
         </div>
     );
 }
+// import React from 'react';
+// import List from './List';
 
-export async function getServerSideProps(ctx) {
-    // get the current environment
-    let dev = process.env.NODE_ENV !== 'production';
-    let { DEV_URL, PROD_URL } = process.env;
+// export default function Home() {
+//     return (
+//       <div className="container">
+//         <div className="row">
+//           <div className="col-12 text-center mt-5">
+//             <h1>
+//               React Hooks Infinite Scroller
+//             </h1>
+//           </div>
+//           <div className="col-12 text-center mt-3">
+//             {/* <button type="button" className="btn btn-primary" onClick={() => window.open('https://upmostly.com/tutorials/', '_blank')}>
+//               View Full Tutorial at Upmostly.com
+//             </button> */}
+//           </div>
+//         </div>
+//         <div className="row">
+//             <div className="col-6 justify-content-center my-5">
+//             </div>
+//         </div>
+//       </div>
+//     );
+// }
+// export async function getServerSideProps(ctx) {
+//     // get the current environment
+//     const dev = process.env.NODE_ENV !== 'production';
+//     const { DEV_URL, PROD_URL } = process.env;
+    
+//     // request members from api
+//     let response = await fetch(encodeURI(`${dev ? DEV_URL : PROD_URL}/api/members`));
+//     // extract the data
+//     let data = await response.json();
 
-    // request members from api
-    let response = await fetch(encodeURI('https://anash.vercel.app/api/members'));
-    // extract the data
-    let data = await response.json();
-
-    return {
-        props: {
-            members: data['message'],
-        },
-    };
-}
+//     return {
+//         props: {
+//             members: data['message'],
+//         },
+//     };
+// }
