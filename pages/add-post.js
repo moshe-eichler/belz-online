@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Nav from '../components/Nav';
+import NavBar from '../components/NavBar';
 import styles from '../styles/Home.module.css';
 
 export default function AddPost() {
@@ -49,7 +49,7 @@ export default function AddPost() {
 
     return (
         <div>
-            <Nav />
+            <NavBar />
             <div className={styles.container}>
                 <form onSubmit={handlePost} className={styles.form}>
                     {error ? (

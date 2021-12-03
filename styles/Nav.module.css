@@ -10,5 +10,10 @@
 }
 
 .item {
-  margin-right: 12px;
+  margin: 7px;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
 }
