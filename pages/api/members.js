@@ -6,7 +6,7 @@ export default async function getMembers(req, res){
     const queryObject = url.parse(req.url, true).query;
     let querySearch = '';
     if (queryObject.querySearch) querySearch = '\"' + queryObject.querySearch.replace(/ /g, '\" \"') + '\"';
-    console.log(querySearch);
+
     let limit = queryObject.limit;
     let skip = queryObject.skip;
 

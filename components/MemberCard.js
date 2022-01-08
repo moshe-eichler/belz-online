@@ -1,9 +1,19 @@
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
+import Image from 'next/image'
 import styles from '../styles/Home.module.css';
+import advPic from '../public/advertising/weber.png'
   
 export default function MemberCard({ member }) {
-    return (
-        <>
+    if (member.type) {
+        return (
+            <Image
+                height='300px'
+                src={advPic}
+            />
+
+        );
+    } else {
+        return (
             <Card className={styles.card}>
                 <CardBody className='bg-light'>
                     <CardTitle>{member.title + ' ' +  member.first_name + ' ' + member.family_name}</CardTitle>
@@ -28,6 +38,6 @@ export default function MemberCard({ member }) {
                     </CardText>
                 </CardBody>
             </Card>
-        </>
-    );
+        );
+    }
 }

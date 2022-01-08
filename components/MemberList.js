@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { CardDeck } from "reactstrap";
 import MemberCard from './MemberCard';
+import styles from '../styles/Home.module.css';
 
 export default function MemberList({ filters }) {
   const [listItems, setListItems] = useState([]);
@@ -8,7 +9,7 @@ export default function MemberList({ filters }) {
   const prevFilters = useRef(filters);
 
   const getMembers = () => {
-    const baseUrl= "https://anash.vercel.app";
+    const baseUrl= "http://localhost:3000";
 
     const url = new URL(`${baseUrl}/api/members`);
     url.searchParams.append('limit', 20);
@@ -18,6 +19,14 @@ export default function MemberList({ filters }) {
     fetch(url)
       .then(response => response.json())
       .then(items => setListItems(prevState => ([...prevState, ...items['message']])))
+
+    // for (let i = 0; i < listItems.length; i++) {
+    //   console.log('yes');
+    //   if (i % 7 == 0) {
+    //     listItems.splice(i, 0, {'type': 'adv', 'src': '../public/advertising/weber.png'});
+    //   }
+    // }
+    // console.log(listItems);
   }
 
   
@@ -48,10 +57,8 @@ export default function MemberList({ filters }) {
   }
 
   return (
-    <>
-      <CardDeck>
-        {listItems.map((member, i) => <MemberCard member={member} key={i} />)}
-      </CardDeck>
-    </>
+    <CardDeck className={styles.cardDeck}>
+      {listItems.map((member, i) => <MemberCard member={member} key={i} />)}
+    </CardDeck>
   );
 };

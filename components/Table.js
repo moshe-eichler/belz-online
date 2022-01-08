@@ -7,7 +7,6 @@ export default function Table({ members }) {
                 <h2>No added members</h2>
             ) : (
                 <ul>
-                    {console.log(members)}
                     {members.map((post, i) => (
                         <MemberCard post={post} key={i} />
                     ))}
