@@ -9,8 +9,7 @@ export default function MemberList({ filters }) {
   const prevFilters = useRef(filters);
 
   const getMembers = () => {
-    // const baseUrl= "https://anash.vercel.app";
-    const baseUrl= "http://localhost:3000";
+    const baseUrl= "https://anash.vercel.app";
         
     const url = new URL(`${baseUrl}/api/members`);
     url.searchParams.append('limit', 20);
