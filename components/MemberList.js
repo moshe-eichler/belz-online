@@ -9,8 +9,9 @@ export default function MemberList({ filters }) {
   const prevFilters = useRef(filters);
 
   const getMembers = () => {
-    const baseUrl= "https://anash.vercel.app";
-
+    // const baseUrl= "https://anash.vercel.app";
+    const baseUrl= "http://localhost:3000";
+        
     const url = new URL(`${baseUrl}/api/members`);
     url.searchParams.append('limit', 20);
     url.searchParams.append('skip', skip);
@@ -26,7 +27,6 @@ export default function MemberList({ filters }) {
     //     listItems.splice(i, 0, {'type': 'adv', 'src': '../public/advertising/weber.png'});
     //   }
     // }
-    // console.log(listItems);
   }
 
   
@@ -42,7 +42,7 @@ export default function MemberList({ filters }) {
   }, [filters])
 
   useEffect(() => {
-    getMembers()
+    getMembers();
   }, [skip]);
 
 
@@ -52,7 +52,7 @@ export default function MemberList({ filters }) {
   }, []);
 
   async function handleScroll() {
-    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+    if (window.innerHeight + document.documentElement.scrollTop < document.documentElement.offsetHeight) return;
     setSkip((skip) => skip + 20);
   }
 

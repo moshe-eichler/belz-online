@@ -27,6 +27,7 @@ export default function Home() {
                 onSubmit={() => handleSubmitForm()}
             />
             {/* <SideAdvertising src={advPic}/> */}
+            
             <MemberList filters={query}/>
         </>
     );

@@ -20,15 +20,22 @@
   background: url("../public/gold-background.jpeg") no-repeat;
   background-size: cover;
   position: sticky;
-  top: 0;
+  top: 0px;
   z-index: 1;
-  margin: 0px 10px 0px 10px;
   padding: 10px 20px 10px 20px;
 }
 
-.navLink {
+.logo {
+  margin-left: 240px;
+  margin-right: 10px;
+}
+
+.navLink,
+.navLink:visited,
+.navLink:hover {
   font-size: large;
   color: rgb(136, 16, 16);
+  margin-left: 20px;
 }
 
 .cardDeck {
@@ -44,8 +51,16 @@
   margin: 2.5%;
 }
 
-.updateMember {
-  margin-left: 10px;
+.updateMember,
+.updateMember:hover,
+.updateMember:active,
+.updateMember:visited,
+.updateMember:focus {
+  margin-left: 70px;
+  background-color: rgb(181, 16, 16);
+  border-color: rgb(181, 16, 16);
+  box-shadow: none;
+  color: blanchedalmond;
 }
 
 .sideAdv {

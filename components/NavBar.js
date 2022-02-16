@@ -16,17 +16,18 @@ export default function NavBar( { queryFunction, modalFunction} ) {
   return (
     <Navbar variant="tabs" className={styles.navBar}>
       <Link href="/">
-        <Image
-          src={profilePic}
-          alt="Picture of the author"
-          width={50}
-          height={50}
-          // blurDataURL="data:..." automatically provided
-          // placeholder="blur" // Optional blur-up while loading
-        />
+        <div className={styles.logo}>
+          <Image
+            src={profilePic}
+            alt="Picture of the author"
+            width={50}
+            height={50}
+            margin={10}
+          />
+        </div>
       </Link>
       <Nav className={`me-auto`}>
-        <NavDropdown title="רשימת אנ״ש" id="basic-nav-dropdown">
+        {/* <NavDropdown title="רשימת אנ״ש" id="basic-nav-dropdown">
             <NavDropdown.Item href="/?city=ירושלים">ירושלים</NavDropdown.Item>
             <NavDropdown.Item href="/?city=בני ברק">בני ברק</NavDropdown.Item>
             <NavDropdown.Item href="/?city=אשדוד">אשדוד</NavDropdown.Item>
@@ -34,36 +35,33 @@ export default function NavBar( { queryFunction, modalFunction} ) {
             <NavDropdown.Item href="/?city=ברוקלין">ברוקלין</NavDropdown.Item>
             <NavDropdown.Item href="/?city=מונסי">מונסי</NavDropdown.Item>
             <NavDropdown.Item href="/?city=מונטריאול">מונטריאול</NavDropdown.Item>
-        </NavDropdown>
+        </NavDropdown> */}
         <Nav.Item>
           <Nav.Link href="/" className={styles.navLink}>רשימת אנ״ש</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-1" href='/test' className={styles.navLink}>רשימת עסקים</Nav.Link>
+          <Nav.Link eventKey="link-1" href='business' className={styles.navLink}>רשימת עסקים</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-2"  href='/add-post' className={styles.navLink}>עדכן פרטי איש קשר</Nav.Link>
+          <Nav.Link eventKey="link-2"  href='simches-board' className={styles.navLink}>לוח שמחות</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-3" href='/notice-board' className={styles.navLink}>
-            Disabled
-          </Nav.Link>
+          <Nav.Link eventKey="link-2"  href='notice-board' className={styles.navLink}>לוח מודעות</Nav.Link>
         </Nav.Item>
-      </Nav>
-      <Button variant="primary" onClick={() => modalFunction(true)} className={styles.updateMember}>
-        עדכון/הוספת איש קשר
-      </Button>
+       </Nav>
       <Form className={`d-flex ${styles.form}`} onSubmit={onFormSubmit}>
         <FormControl
           type="search"
           placeholder="חפש לפי: שם/משפחה/עיר/בן/חתן"
           className="me-2"
-          width="2000px"
           aria-label="Search"
           onChange={(e) => setQuery(e.target.value)}
         />
-        <Button variant="outline-success" onClick={() => queryFunction(query)}>חפש</Button>
+        <Button className={styles.updateMember} variant="outline-success" onClick={() => queryFunction(query)}>חפש</Button>
       </Form>
+      <Button variant="primary" onClick={() => modalFunction(true)} className={styles.updateMember}>
+        עדכון/הוספת איש קשר
+      </Button>
     </Navbar>
   )
 }
