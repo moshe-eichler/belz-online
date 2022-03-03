@@ -9,7 +9,8 @@ export default function MemberList({ filters }) {
   const prevFilters = useRef(filters);
 
   const getMembers = () => {
-    const baseUrl= "https://anash.vercel.app";
+    // const baseUrl= "https://anash.vercel.app";
+    const baseUrl= "http://localhost:3000";
         
     const url = new URL(`${baseUrl}/api/members`);
     url.searchParams.append('limit', 20);
@@ -51,7 +52,9 @@ export default function MemberList({ filters }) {
   }, []);
 
   async function handleScroll() {
-    if (window.innerHeight + document.documentElement.scrollTop < document.documentElement.offsetHeight) return;
+    console.log(window.innerHeight + document.documentElement.scrollTop)
+    console.log(document.documentElement.offsetHeight)
+    if (window.innerHeight + document.documentElement.scrollTop + 10 < document.documentElement.innerHeight) return;
     setSkip((skip) => skip + 20);
   }
 
