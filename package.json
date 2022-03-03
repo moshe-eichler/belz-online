@@ -30,7 +30,7 @@
     "stream": "^0.0.2"
   },
   "devDependencies": {
-    "eslint": "^8.0.1",
+    "eslint": "^8.10.0",
     "eslint-config-next": "11.1.2",
     "eslint-plugin-react": "^7.26.1"
   },
