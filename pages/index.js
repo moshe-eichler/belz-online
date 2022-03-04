@@ -29,8 +29,7 @@ export default function Home(props) {
 
 export const getStaticProps = async () => {
     const data = await fetch(
-        "http://localhost:3000/api/members?limit=20"
-        // "http://localhost:3000/api/members?limit=20"
+        `${process.env.baseUrl}/api/members`
     ).then((response) => response.json());
     
     const members = data.message

@@ -9,10 +9,8 @@ export default function Content({ data, filters }) {
     const [skip, setSkip] = useState(20);
 
     const getMembers = async (triger='') => {
-        // const baseUrl= "https://anash.vercel.app";
-        const baseUrl= "http://localhost:3000";
 
-        const url = new URL(`${baseUrl}/api/members`);
+        const url = new URL(`${process.env.baseUrl}/api/members`);
         url.searchParams.append('limit', 20);
         if (triger != 'filters') url.searchParams.append('skip', skip);
         if (filters) url.searchParams.append('querySearch', filters);
