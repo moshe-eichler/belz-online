@@ -29,7 +29,8 @@ export default function Home(props) {
 
 export const getStaticProps = async () => {
     const data = await fetch(
-        "http://anash.vercel.app/api/members?limit=20"
+        "http://localhost:3000/api/members?limit=20"
+        // "http://localhost:3000/api/members?limit=20"
     ).then((response) => response.json());
     
     const members = data.message
