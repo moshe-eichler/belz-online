@@ -4,13 +4,13 @@ import { CardDeck } from "reactstrap";
 import MemberCard from './MemberCard';
 import styles from '../styles/Home.module.css';
 
-export default function Content({ data, filters }) {
+export default function Content({ baseUrl, data, filters }) {
+
     const [members, setMembers] = useState(data);
     const [skip, setSkip] = useState(20);
 
     const getMembers = async (triger='') => {
-
-        const url = new URL(`${process.env.baseUrl}/api/members`);
+        const url = new URL(baseUrl+'/api/members');
         url.searchParams.append('limit', 20);
         if (triger != 'filters') url.searchParams.append('skip', skip);
         if (filters) url.searchParams.append('querySearch', filters);
