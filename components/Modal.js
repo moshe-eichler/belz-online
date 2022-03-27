@@ -56,34 +56,34 @@ export default function MyVerticallyCenteredModal(props) {
                 <Container>
                     <Row>
                         <Col md={6}>
-                            <input placeholder='שם פרטי' name='firstName' onChange={(e)=>{setPName(e.target.value)}} class='form-control' />
+                            <input placeholder='שם פרטי' name='firstName' onChange={(e)=>{setPName(e.target.value)}} class='form-control' required/>
                         </Col>
                         <Col md={6}>
-                            <input placeholder='משפחה' name='familyName' onChange={(e)=>{setFName(e.target.value)}} class='form-control' />
+                            <input placeholder='משפחה' name='familyName' onChange={(e)=>{setFName(e.target.value)}} class='form-control' required/>
                         </Col>
                     </Row>
                     <br />
                     <Row>
                         <Col md={12}>
-                            <input placeholder='כתובת כולל עיר (לדוגמה: דובר שלום 4 ירושלים)' name='address' onChange={(e)=>{setAddress(e.target.value)}} class='form-control' />
+                            <input placeholder='כתובת כולל עיר (לדוגמה: דובר שלום 4 ירושלים)' name='address' onChange={(e)=>{setAddress(e.target.value)}} class='form-control' required/>
                         </Col>
                     </Row>
                     <br />
                     <Row>
                         <Col md={6}>
-                            <input placeholder='טלפון' name='phone' onChange={(e)=>{setPhone(e.target.value)}} class='form-control' />
+                            <input placeholder='טלפון' name='phone' onChange={(e)=>{setPhone(e.target.value)}} class='form-control' required/>
                         </Col>
                         <Col md={6}>
-                            <input placeholder='טלפון נייד' name='cellphone' onChange={(e)=>{setCellphone(e.target.value)}} class='form-control' />
+                            <input placeholder='טלפון נייד' name='cellphone' onChange={(e)=>{setCellphone(e.target.value)}} class='form-control' required/>
                         </Col>
                     </Row>
                     <br />
                     <Row>
                         <Col md={6}>
-                            <input placeholder='בן' name='father' onChange={(e)=>{setFather(e.target.value)}} class='form-control' />
+                            <input placeholder='בן' name='father' onChange={(e)=>{setFather(e.target.value)}} class='form-control' required/>
                         </Col>
                         <Col md={6}>
-                            <input placeholder='חתן' name='fatherInLaw' onChange={(e)=>{setFatherInLaw(e.target.value)}} class='form-control' />
+                            <input placeholder='חתן' name='fatherInLaw' onChange={(e)=>{setFatherInLaw(e.target.value)}} class='form-control' required/>
                         </Col>
                     </Row>
                 </Container>

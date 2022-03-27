@@ -24,6 +24,7 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
     "react-dom": "^17.0.2",
+    "react-google-recaptcha": "^2.1.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-jss": "^8.0.0",
     "react-redux": "^7.2.6",
