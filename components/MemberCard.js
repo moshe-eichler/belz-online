@@ -11,7 +11,7 @@ export default function MemberCard({ member }) {
     const [buttonText, setButtonText] = useState("הצג מספר טלפון");
 
     const changeText = async (memberId) => {
-        const url = new URL('/api/phone-by-memberid');
+        const url = new URL('anash.vercel.app/api/phone-by-memberid');
         url.searchParams.append('memberid', memberId);
 
         console.log(url);
