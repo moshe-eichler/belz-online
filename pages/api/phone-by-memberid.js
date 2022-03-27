@@ -1,5 +1,4 @@
 const { connectToDatabase } = require('../../lib/mongodb');
-const ObjectId = require('mongodb').ObjectId;
 const url = require('url');
 
 export default async function getPhoneByMemberId(req, res){
