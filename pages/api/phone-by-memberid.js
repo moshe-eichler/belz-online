@@ -5,7 +5,6 @@ export default async function getPhoneByMemberId(req, res){
     const queryObject = url.parse(req.url, true).query;
 
     const memberId = queryObject.memberid;
-    console.log(memberId)
 
     try {
         // connect to the database
@@ -14,8 +13,6 @@ export default async function getPhoneByMemberId(req, res){
         const memberData = await db
         .collection('anash_belz')
         .findOne({ 'ID': memberId });
-
-        console.log(memberData);
 
         return res.json({
             message: {

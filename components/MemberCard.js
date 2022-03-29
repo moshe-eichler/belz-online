@@ -8,20 +8,18 @@ import { useState } from 'react';
 
 
 export default function MemberCard({ member }) {
-    const [buttonText, setButtonText] = useState("הצג מספר טלפון");
+    const [phone_number, setPhoneNumber] = useState("הצג מספרי טלפון");
+    const [mobile_phone, setMobilePhone] = useState("");
 
     const changeText = async (memberId) => {
-        const url = new URL('https://anash.vercel.app/api/phone-by-memberid');
+        const url = new URL('http://localhost:3000/api/phone-by-memberid');
         url.searchParams.append('memberid', memberId);
-
-        console.log(url);
 
         const response = await fetch(url);
         const phone_numbers = await response.json();
-        console.log(phone_numbers.message.phone_number);
-        console.log(phone_numbers.message.mobile_phone);
         
-        setButtonText('טלפון: ' + phone_numbers.message.phone_number + ' טלפון נייד: ' + phone_numbers.message.mobile_phone);
+        setPhoneNumber('בית: ' + phone_numbers.message.phone_number);
+        setMobilePhone('נייד: ' + phone_numbers.message.mobile_phone);
     }
     
     if (member.type) {
@@ -38,7 +36,7 @@ export default function MemberCard({ member }) {
                 <CardBody className='bg-light'>
                     <CardTitle>{member.title + ' ' +  member.first_name + ' ' + member.family_name}</CardTitle>
                     <CardText>
-                        <span>{'כתובת: ' + member.street + ' ' + member.number}</span>
+                        <span>{member.street + ' ' + member.number}</span>
                         <br />
                         <span>{member.city + ' - ' + member.country}</span>
                         <br />
@@ -46,7 +44,9 @@ export default function MemberCard({ member }) {
                         <br />
                         <br />
                         <Button variant="secondary" className={'demo'} memberId={member.ID} onClick={() => changeText(member.ID)}>
-                            {buttonText}
+                            {phone_number}
+                            <br />
+                            {mobile_phone}
                         </Button>
                         <br />
                         <br />
