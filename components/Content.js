@@ -4,7 +4,7 @@ import { CardDeck } from "reactstrap";
 import MemberCard from './MemberCard';
 import styles from '../styles/Home.module.css';
 
-export default function Content({ baseUrl, data, filters }) {
+export default function Content({ baseUrl, data, filters, modalFunction}) {
 
     const [members, setMembers] = useState(data);
     const [skip, setSkip] = useState(20);
@@ -37,7 +37,7 @@ export default function Content({ baseUrl, data, filters }) {
                 hasMore={true}
             >
                 <CardDeck className={styles.cardDeck}>
-                    {members.map((member, i) => <MemberCard member={member} key={i} />)}
+                    {members.map((member, i) => <MemberCard member={member} key={i} modalFunction={modalFunction}/>)}
                 </CardDeck>
             </InfiniteScroll>
         </>

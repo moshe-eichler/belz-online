@@ -22,7 +22,7 @@ export default function Home(props) {
                 onHide={() => setModalShow(false)}
             />
             {/* <SideAdvertising src={advPic}/> */}
-            <Content baseUrl={props.base_url} data={props.members} filters={query}/>
+            <Content baseUrl={props.base_url} data={props.members} filters={query} modalFunction={setModalShow}/>
         </>
     );
 }
