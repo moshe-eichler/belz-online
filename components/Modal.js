@@ -5,6 +5,8 @@ export default function MyVerticallyCenteredModal(props) {
     const [pName, setPName] = useState('');
     const [fName, setFName] = useState('');
     const [address, setAddress] = useState('');
+    const [number, setNumber] = useState('');
+    const [city, setCity] = useState('');
     const [phone, setPhone] = useState('');
     const [cellphone, setCellphone] = useState('');
     const [father, setFather] = useState('');
@@ -18,6 +20,8 @@ export default function MyVerticallyCenteredModal(props) {
             pName,
             fName,
             address,
+            number,
+            city,
             phone,
             cellphone,
             father,
@@ -37,6 +41,8 @@ export default function MyVerticallyCenteredModal(props) {
                 console.log('Response succeeded!')
                 setPName('');
                 setAddress('');
+                setNumber('');
+                setCity('');
                 setPhone('');
                 setCellphone('');
                 setFather('');
@@ -64,8 +70,14 @@ export default function MyVerticallyCenteredModal(props) {
                     </Row>
                     <br />
                     <Row>
-                        <Col md={12}>
-                            <input placeholder='כתובת כולל עיר (לדוגמה: דובר שלום 4 ירושלים)' name='address' onChange={(e)=>{setAddress(e.target.value)}} class='form-control' required/>
+                    <Col md={4}>
+                            <input placeholder='רחוב' name='address' onChange={(e)=>{setAddress(e.target.value)}} class='form-control' required/>
+                        </Col>
+                        <Col md={2}>
+                            <input placeholder='מספר' name='number' onChange={(e)=>{setNumber(e.target.value)}} class='form-control' required/>
+                        </Col>
+                        <Col md={3}>
+                            <input placeholder='עיר' name='city' onChange={(e)=>{setCity(e.target.value)}} class='form-control' required/>
                         </Col>
                     </Row>
                     <br />
