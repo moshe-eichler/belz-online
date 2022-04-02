@@ -24,7 +24,7 @@ export default function MyVerticallyCenteredModal(props) {
             fatherInLaw
         }
 
-        fetch('/api/contact', {
+        fetch('https://anash.vercel.app/api/contact', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',

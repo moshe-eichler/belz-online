@@ -22,19 +22,19 @@ export default function Home(props) {
                 onHide={() => setModalShow(false)}
             />
             {/* <SideAdvertising src={advPic}/> */}
-            <Content baseUrl={props.base_url} data={props.members} filters={query} modalFunction={setModalShow}/>
+            <Content data={props.members} filters={query} modalFunction={setModalShow}/>
         </>
     );
 }
 
 export const getStaticProps = async () => {
-    const data = await fetch(`${process.env.BASE_URL}/api/members?limit=20`)
+    const data = await fetch(`https://anash.vercel.app/api/members?limit=20`)
         .then((response) => response.json());
     
     const members = data.message
     
     return {
-        props: { members, 'base_url': process.env.BASE_URL }
+        props: { members }
     };
 };
   

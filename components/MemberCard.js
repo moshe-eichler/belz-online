@@ -22,7 +22,7 @@ export default function MemberCard({ member, modalFunction}) {
     }
 
     const changeText = async (memberId) => {
-        const url = new URL('http://localhost:3000/api/phone-by-memberid');
+        const url = new URL('https://anash.vercel.app/api/phone-by-memberid');
         url.searchParams.append('memberid', memberId);
 
         const response = await fetch(url);
@@ -62,14 +62,9 @@ export default function MemberCard({ member, modalFunction}) {
                         </Button>
                         <br />
                         <br />
-                        {/* <span>{'טלפון: ' + member.phone_number}</span>
-                        <br />
-                        <spam>{'טלפון נייד: ' + member.mobile_phone}</spam>
-                        <br /> */}
                         <span>{'בן: ' + (member.father || '')}</span>
                         <br />
                         <span>{'חתן: ' + (member.father_in_law || '')}</span>
-                        {/* <ReCAPTCHA size="small" sitekey="6LdnQBYfAAAAAO0dCa0DMb6E0wzkUn5ou3mDruAo" /> */}
                     </CardText>
                     {/* <CardText>
                         <div id={member.ID} style={{ display: 'none' }}>
