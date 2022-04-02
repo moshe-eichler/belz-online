@@ -17,7 +17,7 @@ export default function (req, res) {
         to: 'm0548597760@gmail.com',
         subject: `עדכון/הוספת מנוי`,
         html: `<p>שם פרטי: <b>${req.body.pName}</b> שם משפחה: <b>${req.body.fName}</b></p>
-        <p>כתובת: <b>${req.body.address}</b></p>
+        <p>כתובת: <b>${req.body.address}</b>מספר: <b>${req.body.number}</b>עיר: <b>${req.body.city}</b></p>
         <p>טלפון: <b>${req.body.phone}</b> טלפון נייד: <b>${req.body.cellphone}</b></p>
         <p>בן: <b>${req.body.father}</b> חתן: <b>${req.body.fatherInLaw}</b></p>`
     }

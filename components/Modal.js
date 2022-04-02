@@ -74,7 +74,7 @@ export default function MyVerticallyCenteredModal(props) {
                             <input placeholder='רחוב' name='address' onChange={(e)=>{setAddress(e.target.value)}} class='form-control' required/>
                         </Col>
                         <Col md={2}>
-                            <input type='number' placeholder='מספר' name='number' onChange={(e)=>{setNumber(e.target.value)}} class='form-control' required/>
+                            <input placeholder='מספר' name='number' onChange={(e)=>{setNumber(e.target.value)}} class='form-control' required/>
                         </Col>
                         <Col md={4}>
                             <input placeholder='עיר' name='city' onChange={(e)=>{setCity(e.target.value)}} class='form-control' required/>
