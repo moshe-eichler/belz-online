@@ -1,8 +1,10 @@
 const { connectToDatabase } = require('../../lib/mongodb');
 const ObjectId = require('mongodb').ObjectId;
 const url = require('url');
+import protectAPI from '../../middleware/protectAPI';
 
-export default async function getMembers(req, res){
+
+const getMembers = async (req, res) => {
     const queryObject = url.parse(req.url, true).query;
     let querySearch = '';
     if (queryObject.querySearch) querySearch = '\"' + queryObject.querySearch.replace(/ /g, '\" \"') + '\"';
@@ -19,6 +21,7 @@ export default async function getMembers(req, res){
             members = await db
             .collection('anash_belz')
             .find({ $text: { $search: querySearch} })
+            .project( { _id:0, phone_number:0, mobile_phone:0 })
             .sort({ family_name: 1, first_name: 1})
             .limit(limit ? Number(limit) : 99999)
             .skip(skip ? Number(skip) : 0)
@@ -27,6 +30,7 @@ export default async function getMembers(req, res){
             members = await db
             .collection('anash_belz')
             .find()
+            .project( { _id:0, phone_number:0, mobile_phone:0 })
             .sort({ family_name: 1, first_name: 1})
             .limit(limit ? Number(limit) : 99999)
             .skip(skip ? Number(skip) : 0)
@@ -46,3 +50,5 @@ export default async function getMembers(req, res){
         });
     }
 }
+
+export default protectAPI(getMembers);

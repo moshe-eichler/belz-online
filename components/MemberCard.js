@@ -2,7 +2,6 @@ import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import Image from 'next/image'
 import styles from '../styles/Home.module.css';
 import advPic from '../public/advertising/weber.png'
-// import ReCAPTCHA from 'react-google-recaptcha'
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 
@@ -23,6 +22,7 @@ export default function MemberCard({ member, modalFunction}) {
 
     const changeText = async (memberId) => {
         const url = new URL('https://anash.vercel.app/api/phone-by-memberid');
+        //m const url = new URL('http://localhost:3000/api/phone-by-memberid');
         url.searchParams.append('memberid', memberId);
 
         const response = await fetch(url);
