@@ -26,7 +26,7 @@ export default function Content({ data, filters, modalFunction}) {
         if (!callNumber & !filters) return; // To disable calling in the first render.
 
         setMembers([]); // This will affect only the next render, The InfiniteScroll component will call the infinite function.
-        if (members.length == 20) infinite(); // In this case InfiniteScroll component will not call the infinite function, So we need to call it manuaaly.
+        if (members.length <= 20) infinite(); // In this case InfiniteScroll component will not call the infinite function, So we need to call it manuaaly.
     }, [filters])
 
     useEffect( async () => {

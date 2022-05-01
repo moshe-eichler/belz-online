@@ -22,7 +22,7 @@ export default function MemberCard({ member, modalFunction}) {
 
     const changeText = async (memberId) => {
         const url = new URL('https://anash.vercel.app/api/phone-by-memberid');
-        //m const url = new URL('http://localhost:3000/api/phone-by-memberid');
+        // const url = new URL('http://localhost:3000/api/phone-by-memberid');
         url.searchParams.append('memberid', memberId);
 
         const response = await fetch(url);
