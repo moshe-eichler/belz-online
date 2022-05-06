@@ -27,8 +27,9 @@ export default function MyVerticallyCenteredModal(props) {
             father,
             fatherInLaw
         }
-
-        fetch('https://anash.vercel.app/api/contact', {
+        const url = 'https://anash.vercel.app/api/contact'
+        // const url = 'http://localhost:3000/api/contact'
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -74,7 +75,7 @@ export default function MyVerticallyCenteredModal(props) {
                             <input placeholder='רחוב' name='address' onChange={(e)=>{setAddress(e.target.value)}} class='form-control' required/>
                         </Col>
                         <Col md={2}>
-                            <input placeholder='מספר' name='number' onChange={(e)=>{setNumber(e.target.value)}} class='form-control' required/>
+                            <input placeholder='מס׳' name='number' onChange={(e)=>{setNumber(e.target.value)}} class='form-control' required/>
                         </Col>
                         <Col md={4}>
                             <input placeholder='עיר' name='city' onChange={(e)=>{setCity(e.target.value)}} class='form-control' required/>

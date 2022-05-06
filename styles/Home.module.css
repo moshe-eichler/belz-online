@@ -1,7 +1,7 @@
 .content {
   width: 70%;
   height: 100%;
-  margin: auto;
+  margin: 0;
 }
 
 .search {
@@ -38,17 +38,13 @@
   margin-left: 20px;
 }
 
-.cardDeck {
-  width: 70%;
-  margin: auto;
-}
-
 .card {
   text-align: center;
   float: right;
   width: 20%;
   height: 300px;
   margin: 2.5%;
+  color: rgb(100, 38, 38);
 }
 
 .updateMember,
@@ -75,7 +71,34 @@
   color: blanchedalmond;
 }
 
-.sideAdv {
-  width: 15%;
-  margin: auto;
+.ad {
+  position: fixed;
+  width: 250px;
+  margin: 1.5%;
+}
+
+.loader {
+  text-align: center;
+  bottom: 0;
+}
+
+.loaderSpin {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #6c7981;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

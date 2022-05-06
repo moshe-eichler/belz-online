@@ -11,3 +11,32 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.content {
+  width: 70%;
+  margin-right: 15%;
+}
+
+.sideAdRight {
+  width: 14%;
+  height: 85%;
+  position: fixed;
+  margin-top: 2%;
+  right: 1%;
+  border:1px solid black;
+  overflow: auto;
+}
+
+.sideAdLeft {
+  width: 14%;
+  height: 85%;
+  position: fixed;
+  margin-top: 2%;
+  left: 1%;
+  border:1px solid black;
+  overflow: auto;
+}
+
+.sideAdRight::-webkit-scrollbar, .sideAdLeft::-webkit-scrollbar {
+  display: none;
+}

@@ -49,6 +49,9 @@ const getMembers = async (req, res) => {
             success: false,
         });
     }
+    finally {
+        await client.close();
+    }
 }
 
 export default protectAPI(getMembers);

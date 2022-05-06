@@ -8,6 +8,7 @@ export default function Content({ data, filters, modalFunction}) {
 
     const [members, setMembers] = useState(data);
     const [callNumber, setCallNumber] = useState(0);
+    const [moreResults, setMoreResults] = useState(true);
 
     const getMembers = async () => { 
         const url = new URL(`https://anash.vercel.app/api/members`);
@@ -22,9 +23,14 @@ export default function Content({ data, filters, modalFunction}) {
         return json_response;
     }
 
+    const infinite = () => {
+        setCallNumber((callNumber) => callNumber + 1)
+    }
+
     useEffect( async () => {
         if (!callNumber & !filters) return; // To disable calling in the first render.
 
+        setMoreResults(true);
         setMembers([]); // This will affect only the next render, The InfiniteScroll component will call the infinite function.
         if (members.length <= 20) infinite(); // In this case InfiniteScroll component will not call the infinite function, So we need to call it manuaaly.
     }, [filters])
@@ -32,25 +38,23 @@ export default function Content({ data, filters, modalFunction}) {
     useEffect( async () => {
         if (!callNumber) return; // To disable calling in the first render.
 
-        const newMembers = await getMembers();
-        setMembers(currentMembers => ([...currentMembers, ...newMembers['message']]))
+        const result = await getMembers();
+        const newMembers = result['message'];
+
+        if (newMembers.length < 20) setMoreResults(false);
+        setMembers(currentMembers => ([...currentMembers, ...newMembers]))
     }, [callNumber])
 
-    const infinite = () => {
-        setCallNumber((callNumber) => callNumber + 1)
-    }
-
     return (
-        <>
-            <InfiniteScroll
-                dataLength={members.length}
-                next={infinite}
-                hasMore={true}
-            >
-                <CardDeck className={styles.cardDeck}>
-                    {members.map((member, i) => <MemberCard member={member} key={i} modalFunction={modalFunction}/>)}
-                </CardDeck>
-            </InfiniteScroll>
-        </>
+        <InfiniteScroll
+            dataLength={members.length}
+            next={infinite}
+            hasMore={moreResults}
+            loader={<div className={styles.loader}><h3>טוען אנשי קשר...</h3></div>}
+        >
+            <CardDeck className={styles.cardDeck}>
+                {members.map((member, i) => <MemberCard member={member} key={i} modalFunction={modalFunction}/>)}
+            </CardDeck>
+        </InfiniteScroll>
     );
 };
