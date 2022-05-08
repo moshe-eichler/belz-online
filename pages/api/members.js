@@ -1,20 +1,18 @@
-const { connectToDatabase } = require('../../lib/mongodb');
-const ObjectId = require('mongodb').ObjectId;
-const url = require('url');
 import protectAPI from '../../middleware/protectAPI';
-
+const { connectToDatabase } = require('../../lib/mongodb');
+const url = require('url');
 
 const getMembers = async (req, res) => {
-    const queryObject = url.parse(req.url, true).query;
+    let queryObject = url.parse(req.url, true).query;
     let querySearch = '';
     if (queryObject.querySearch) querySearch = '\"' + queryObject.querySearch.replace(/ /g, '\" \"') + '\"';
-
     let limit = queryObject.limit;
     let skip = queryObject.skip;
 
     try {
         // connect to the database
         let { db } = await connectToDatabase();
+
         // fetch the members
         let members = []
         if (querySearch) {
@@ -42,15 +40,13 @@ const getMembers = async (req, res) => {
             message: JSON.parse(JSON.stringify(members)),
             success: true,
         });
+
     } catch (error) {
         // return the error
         return res.json({
             message: new Error(error).message,
             success: false,
         });
-    }
-    finally {
-        await client.close();
     }
 }
 
