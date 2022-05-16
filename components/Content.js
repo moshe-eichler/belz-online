@@ -13,7 +13,7 @@ export default function Content({ data, filters, modalFunction}) {
     const getMembers = async () => { 
         const url = new URL(`https://anash.vercel.app/api/members`);
         // const url = new URL(`http://localhost:3000/api/members`);
-        url.searchParams.append('limit', 20);
+        url.searchParams.append('limit', 40);
         url.searchParams.append('skip', members.length);
         if (filters) url.searchParams.append('querySearch', filters);
 
@@ -32,7 +32,7 @@ export default function Content({ data, filters, modalFunction}) {
 
         setMoreResults(true);
         setMembers([]); // This will affect only the next render, The InfiniteScroll component will call the infinite function.
-        if (members.length <= 20) infinite(); // In this case InfiniteScroll component will not call the infinite function, So we need to call it manuaaly.
+        if (members.length <= 40) infinite(); // In this case InfiniteScroll component will not call the infinite function, So we need to call it manuaaly.
     }, [filters])
 
     useEffect( async () => {
@@ -41,7 +41,7 @@ export default function Content({ data, filters, modalFunction}) {
         const result = await getMembers();
         const newMembers = result['message'];
 
-        if (newMembers.length < 20) setMoreResults(false);
+        if (newMembers.length < 40) setMoreResults(false);
         setMembers(currentMembers => ([...currentMembers, ...newMembers]))
     }, [callNumber])
 
