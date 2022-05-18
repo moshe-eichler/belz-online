@@ -108,7 +108,7 @@ export default function Home(props) {
 export const getStaticProps = async () => {
     // console.log(process.env);
     const url = `https://anash.vercel.app/api/members?limit=40`
-    const url = `http://localhost:3000/api/members?limit=40`
+    // const url = `http://localhost:3000/api/members?limit=40`
     const data = await fetch(url)
         .then((response) => response.json());
     
