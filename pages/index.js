@@ -4,19 +4,12 @@ import NavBar from '../components/NavBar';
 import MyVerticallyCenteredModal from '../components/Modal';
 import SideAdvertising from '../components/SideAdvertising';
 import Content from '../components/Content';
-// import styles from '../styles/globals.css';
 import advPicWeber from '../public/advertising/right/weber.png'
-// import advPicAvatChesed from '../public/advertising/avat_chesed.png'
-// import advPicAlef from '../public/advertising/alef_adv.png'
-// import advPicNoimanTours from '../public/advertising/noiman_tours.png'
-// import advPicNoimanStam from '../public/advertising/noiman_stam.png'
-// import advPicMercez from '../public/advertising/mercez.png'
-// import styles from '../styles/Home.module.css';
 import css from 'styled-jsx/css'
 import Image from 'next/image'
 
 
-export default function Home(props) {
+export default function Home() {
     const [query, setQuery] = useState();
     const [modalShow, setModalShow] = useState(false);
     const adStyle = {
@@ -99,23 +92,23 @@ export default function Home(props) {
                 />
             </div> */}
             <div className="content">
-                <Content data={props.members} filters={query} modalFunction={setModalShow}/>
+                <Content data={[]} filters={query} modalFunction={setModalShow}/>
             </div>
         </>
     );
 }
 
-export const getStaticProps = async () => {
-    // console.log(process.env);
-    const url = `https://anash.vercel.app/api/members?limit=40`
-    // const url = `http://localhost:3000/api/members?limit=40`
-    const data = await fetch(url)
-        .then((response) => response.json());
+// export const getStaticProps = async () => {
+//     // console.log(process.env);
+//     // const url = `https://anash.vercel.app/api/members?limit=40`
+//     const url = `http://localhost:3000/api/members?limit=40`
+//     const data = await fetch(url)
+//         .then((response) => response.json());
     
-    const members = data.message
+//     const members = data.message
     
-    return {
-        props: { members }
-    };
-};
+//     return {
+//         props: { members }
+//     };
+// };
   
