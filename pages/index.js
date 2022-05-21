@@ -4,12 +4,13 @@ import NavBar from '../components/NavBar';
 import MyVerticallyCenteredModal from '../components/Modal';
 import SideAdvertising from '../components/SideAdvertising';
 import Content from '../components/Content';
+// import styles from '../styles/globals.css';
 import advPicWeber from '../public/advertising/right/weber.png'
 import css from 'styled-jsx/css'
 import Image from 'next/image'
 
 
-export default function Home() {
+export default function Home(props) {
     const [query, setQuery] = useState();
     const [modalShow, setModalShow] = useState(false);
     const adStyle = {
@@ -92,23 +93,23 @@ export default function Home() {
                 />
             </div> */}
             <div className="content">
-                <Content data={[]} filters={query} modalFunction={setModalShow}/>
+                <Content data={props.members} filters={query} modalFunction={setModalShow}/>
             </div>
         </>
     );
 }
 
-// export const getStaticProps = async () => {
-//     // console.log(process.env);
-//     // const url = `https://anash.vercel.app/api/members?limit=40`
-//     const url = `http://localhost:3000/api/members?limit=40`
-//     const data = await fetch(url)
-//         .then((response) => response.json());
+export const getStaticProps = async () => {
+    // console.log(process.env);
+    const url = `https://anash.vercel.app/api/members?limit=40`
+    // const url = `http://localhost:3000/api/members?limit=40`
+    const data = await fetch(url)
+        .then((response) => response.json());
     
-//     const members = data.message
+    const members = data.message
     
-//     return {
-//         props: { members }
-//     };
-// };
+    return {
+        props: { members }
+    };
+};
   
