@@ -37,6 +37,6 @@ a {
   overflow: auto;
 }
 
-.sideAdRight::-webkit-scrollbar, .sideAdLeft::-webkit-scrollbar {
-  display: none;
+.sideAdRight, .sideAdLeft {
+  overflow: hidden;
 }
