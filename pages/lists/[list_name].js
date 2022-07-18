@@ -47,8 +47,8 @@ export default function HomeTest(props) {
 }
 
 export const getStaticProps = async () => {
-    // const url = `https://anash.vercel.app/api/members?limit=40`
-    const url = `http://localhost:3000/api/members?limit=40`
+    const url = `https://anash.vercel.app/api/members?limit=40`
+    // const url = `http://localhost:3000/api/members?limit=40`
     const data = await fetch(url)
         .then((response) => response.json());
     
