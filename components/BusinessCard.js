@@ -6,13 +6,15 @@ export default function MemberCard({ business }) {
             <hr />
                 <span>{'שם העסק: ' + business.name}</span>
                 <br />
-                <span>{'כתובת: ' + business.address }</span>
+                <span>{'כתובת: ' + (business.street || '')+ ' ' + (business.number || '') }</span>
                 <br />
                 <span>{business.city + ' - ' + business.country}</span>
                 <br />
                 <span>{'טלפון: ' + business.phone}</span>
                 <br />
-                <span>{'קטגוריה: ' + business.category}</span>
+                <span>{'אימייל: ' + business.email}</span>
+                <br />
+                <span>{'אתר: ' + business.site}</span>
             </li>
         </>
     );

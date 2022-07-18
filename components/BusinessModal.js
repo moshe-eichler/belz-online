@@ -1,33 +1,36 @@
+import { textAlign } from '@material-ui/system';
 import { useState } from 'react'
 import { Button, Modal, Container, Row, Col} from 'react-bootstrap';
 import styles from '../styles/Home.module.css';
 
-export default function VerticallyCenteredModal(props) {
-    const [pName, setPName] = useState('');
-    const [fName, setFName] = useState('');
+export default function BuisnessModal(props) {
+    const [bName, setBName] = useState('');
+    const [cName, setCName] = useState('');
     const [address, setAddress] = useState('');
     const [number, setNumber] = useState('');
     const [city, setCity] = useState('');
     const [phone, setPhone] = useState('');
     const [cellphone, setCellphone] = useState('');
-    const [father, setFather] = useState('');
-    const [fatherInLaw, setFatherInLaw] = useState('');
+    const [contact, setContact] = useState('');
+    const [email, setEmail] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         console.log('Sending')
+        
         let data = {
-            pName,
-            fName,
+            bName,
+            cName,
             address,
             number,
             city,
             phone,
             cellphone,
-            father,
-            fatherInLaw
+            contact,
+            email
         }
+        
         const url = 'https://anash.vercel.app/api/contact'
         // const url = 'http://localhost:3000/api/contact'
         fetch(url, {
@@ -36,20 +39,21 @@ export default function VerticallyCenteredModal(props) {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 'type': 'members', 'data': data })
+            body: JSON.stringify({ 'type': 'business', 'data': data })
         }).then((res) => {
             console.log('Response received')
             if (res.status === 200) {
                 console.log('Response succeeded!')
-                setPName('');
-                setFName('');
+                setBName('');
+                setCName('');
                 setAddress('');
                 setNumber('');
                 setCity('');
                 setPhone('');
                 setCellphone('');
-                setFather('');
-                setFatherInLaw('');
+                setContact('');
+                setEmail('');
+                setPic('');
             }
         })
     }
@@ -58,17 +62,25 @@ export default function VerticallyCenteredModal(props) {
         <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
             <Modal.Header closeButton className={styles.modalHeader}>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    עדכון/הוספת איש קשר
+                    עדכון/הוספת עסק
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className="show-grid">
                 <Container>
                     <Row>
                         <Col md={6}>
-                            <input placeholder='שם פרטי' name='firstName' onChange={(e)=>{setPName(e.target.value)}} className='form-control' required/>
+                            <input placeholder='שם העסק' name='businessName' onChange={(e)=>{setBName(e.target.value)}} className='form-control' required/>
                         </Col>
                         <Col md={6}>
-                            <input placeholder='משפחה' name='familyName' onChange={(e)=>{setFName(e.target.value)}} className='form-control' required/>
+                        <select defaultValue='תחום העסק' name='categoryName' onChange={(e)=>{setCName(e.target.value)}} class="form-select" aria-label="Default select example">
+                        {/* <select placeholder='תחום העסק' name='categoryName' onChange={(e)=>{setCName(e.target.value)}} className='form-control'> */}
+                            <option disabled hidden>תחום העסק</option>
+                            <option value="finance">פיננסים</option>
+                            <option value="clothing">ביגוד</option>
+                            <option value="furniture">רהיטים</option>
+                            <option value="leisure">פנאי</option>
+                            <option value="advertising">פרסום</option>
+                        </select>
                         </Col>
                     </Row>
                     <br />
@@ -95,12 +107,29 @@ export default function VerticallyCenteredModal(props) {
                     <br />
                     <Row>
                         <Col md={6}>
-                            <input placeholder='בן' name='father' onChange={(e)=>{setFather(e.target.value)}} className='form-control' required/>
+                            <input placeholder='שם איש קשר' name='contact' onChange={(e)=>{setContact(e.target.value)}} className='form-control'/>
                         </Col>
                         <Col md={6}>
-                            <input placeholder='חתן' name='fatherInLaw' onChange={(e)=>{setFatherInLaw(e.target.value)}} className='form-control' required/>
+                            <input placeholder='אימייל' name='email' onChange={(e)=>{setEmail(e.target.value)}} className='form-control'/>
                         </Col>
                     </Row>
+                    {/* <Row>
+                        <h4 style={{textAlign: 'center'}}>
+                            העלאת לוגו של העסק
+                        </h4>
+                    </Row>
+                    <Row>
+                    <Col md={2}>
+                    </Col>
+                    <Col md={8}>
+                        <div class="input-group mb-3"> */}
+                        {/* <input type="file" onChange={(e)=>{setPic(URL.createObjectURL(e.target.files[0]))}} class="form-control"/> */}
+                        {/* <input onChange={(e)=>{setPic(e.target.files)}} type="file" />
+                        </div>
+                    </Col>
+                    <Col md={2}>
+                    </Col>
+                    </Row> */}
                 </Container>
             </Modal.Body>
             <Modal.Footer className={styles.modalHeader}>

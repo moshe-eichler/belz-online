@@ -1,44 +1,63 @@
-import { useState, useEffect, useRef } from 'react';
-import BusinessCard from './BusinessCard';
+import React, { useState, useEffect } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { CardDeck } from "reactstrap";
+import MemberCard from './MemberCard';
+import styles from '../styles/Home.module.css';
 
-export default function MemberList({ filters }) {
-  const [listItems, setListItems] = useState([]);
-  const [skip, setSkip] = useState(0);
-  const prevFilters = useRef(filters);
+export default function Content({ data, filters, modalFunction}) {
 
-  const getMembers = () => {
-    const baseUrl= "http://localhost:3000";
+    const [members, setMembers] = useState(data);
+    const [callNumber, setCallNumber] = useState(0);
+    const [moreResults, setMoreResults] = useState(true);
 
-    const url = new URL(`${baseUrl}/api/business`);
-    // url.search = new URLSearchParams(Object.entries(filters).reduce((a,[k,v]) => (v ? (a[k]=v, a) : a), {})).toString();
-    // url.searchParams.append('limit', 20);
-    // url.searchParams.append('skip', skip);
-    
-    fetch(url)
-      .then(response => response.json())
-      .then(items => setListItems(prevState => ([...prevState, ...items['message']])))
-  }
+    const getMembers = async () => { 
+        const url = new URL(`https://anash.vercel.app/api/members`);
+        // const url = new URL(`http://localhost:3000/api/members`);
+        url.searchParams.append('limit', 40);
+        url.searchParams.append('skip', members.length);
+        if (filters) url.searchParams.append('querySearch', filters);
 
-  useEffect(() => {
-    getMembers()
-  }, []);
+        const response = await fetch(url);
+        const json_response = await response.json();
 
+        return json_response;
+    }
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const infinite = () => {
+        setCallNumber((callNumber) => callNumber + 1)
+    }
 
-  async function handleScroll() {
-    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-    setSkip((skip) => skip + 20);
-  }
+    useEffect( async () => {
+        if (!callNumber & !filters) return; // To disable calling in the first render.
 
-  return (
-    <>
-      <ul>
-        {listItems.map((business, i) => <BusinessCard business={business} key={i} />)}
-      </ul>
-    </>
-  );
+        setMoreResults(true);
+        setMembers([]); // This will affect only the next render, The InfiniteScroll component will call the infinite function.
+        if (members.length <= 40) infinite(); // In this case InfiniteScroll component will not call the infinite function, So we need to call it manuaaly.
+    }, [filters])
+
+    useEffect( async () => {
+        if (!callNumber) return; // To disable calling in the first render.
+
+        const result = await getMembers();
+        const newMembers = result['message'];
+
+        if (newMembers.length < 40) setMoreResults(false);
+        setMembers(currentMembers => ([...currentMembers, ...newMembers]))
+    }, [callNumber])
+
+    return (
+        // <InfiniteScroll
+        //     dataLength={members.length}
+        //     next={infinite}
+        //     hasMore={moreResults}
+        //     loader={<div className={styles.loader}><h3>טוען אנשי קשר...</h3></div>}
+        // >
+        //     <CardDeck className={styles.content}>
+        //         {members.map((member, i) => <MemberCard member={member} key={i} modalFunction={modalFunction}/>)}
+        //     </CardDeck>
+        // </InfiniteScroll>
+        <>
+            <h1>דף העסקים</h1>
+        </>
+    );
 };

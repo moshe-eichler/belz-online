@@ -1,7 +1,6 @@
 .content {
-  width: 70%;
-  height: 100%;
-  margin: 0;
+  margin-right: 1%;
+  margin-left: 1%;
 }
 
 .search {
@@ -17,34 +16,84 @@
 }
 
 .navBar {
-  background: url("../public/gold-background.jpeg") no-repeat;
+  /* background: url("../public/silver-background1.jpeg") no-repeat; */
+  background-color: orange !important;
   background-size: cover;
   position: sticky;
   top: 0px;
   z-index: 1;
-  padding: 10px 20px 10px 20px;
+  padding: 0px 10px 0px 10px;
+  height: 80px;
 }
 
 .logo {
-  margin-left: 240px;
-  margin-right: 10px;
+  position: relative;
+  margin-left: 150px;
+  margin-right: 60px;
 }
 
 .navLink,
 .navLink:visited,
 .navLink:hover {
-  font-size: large;
-  color: rgb(136, 16, 16);
-  margin-left: 20px;
+  text-align: center;
+  font-size: x-large;
+  color: rgb(255, 255, 255);
+  /* margin: 10px; */
 }
 
 .card {
   text-align: center;
   float: right;
-  width: 20%;
-  height: 300px;
-  margin: 2.5%;
-  color: rgb(100, 38, 38);
+  width: 22%;
+  height: 320px;
+  overflow: auto;
+  margin: 1.5%;
+  margin-top: 0;
+  padding: 0 !important;
+  color: rgb(95, 95, 95);
+  background-color: #FFC55C !important;
+}
+
+/* Start section navbar items with pip */
+.flex {
+  position: relative;
+  margin: 1em;
+  overflow: hidden;
+}
+.flex-list ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -1px;
+}
+.flex-list li {
+  flex-grow: 1;
+  flex-basis: auto;
+  margin: .25em 0;
+  padding: 0 1em;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
+}
+/* End section */
+
+
+.navigationItems {
+  background-color: #F28500;
+  border-color: #F28500;
+  box-shadow: none;
+  color: rgb(255, 255, 255);
+  height: 45px;
+  width: 130px;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: auto;
+  cursor: pointer;
+}
+
+.navigationImage {
+  margin-top: 10%;
 }
 
 .updateMember,
@@ -53,22 +102,37 @@
 .updateMember:visited,
 .updateMember:focus {
   margin-left: 70px;
-  background-color: rgb(181, 16, 16);
-  border-color: rgb(181, 16, 16);
+  background-color: #F28500;
+  border-color: #F28500;
   box-shadow: none;
-  color: blanchedalmond;
+  color: rgb(255, 255, 255);
 }
 
-.phoneNumber,
-.phoneNumber:hover,
-.phoneNumber:active,
-.phoneNumber:visited,
-.phoneNumber:focus {
-  margin-left: 70px;
-  background-color: rgb(181, 16, 16);
-  border-color: rgb(181, 16, 16);
+.showPhone,
+.showPhone:hover,
+.showPhone:active,
+.showPhone:visited,
+.showPhone:focus {
+  background-color: #FFA500;
+  border-color: #FFA500;
   box-shadow: none;
-  color: blanchedalmond;
+  color: rgb(255, 255, 255);
+}
+
+.modalHeader {
+  background-color: orange;
+  color: white;
+}
+
+.modalButton,
+.modalButton:hover,
+.modalButton:active,
+.modalButton:visited,
+.modalButton:focus{
+  background-color: #F28500;
+  border-color: #F28500;
+  box-shadow: none;
+  color: rgb(255, 255, 255);
 }
 
 .ad {
@@ -85,7 +149,7 @@
 .loaderSpin {
   border: 5px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 5px solid #6c7981;
+  border-top: 5px solid #F28500;
   width: 40px;
   height: 40px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
@@ -101,9 +165,4 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-.side-ad{
-  padding: "10%";
-  border: "1px solid black";
 }

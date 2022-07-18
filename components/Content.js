@@ -52,7 +52,7 @@ export default function Content({ data, filters, modalFunction}) {
             hasMore={moreResults}
             loader={<div className={styles.loader}><h3>טוען אנשי קשר...</h3></div>}
         >
-            <CardDeck className={styles.cardDeck}>
+            <CardDeck className={styles.content}>
                 {members.map((member, i) => <MemberCard member={member} key={i} modalFunction={modalFunction}/>)}
             </CardDeck>
         </InfiniteScroll>

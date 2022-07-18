@@ -1,20 +1,29 @@
 import { React, useState } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button, NavItem } from 'react-bootstrap';
 import styles from '../styles/Home.module.css';
-import profilePic from '../public/logo.png'
+import profilePic from '../public/logo-removebg-preview.png'
+import memberPic from '../public/icons8-user-male-30 (2).png'
+import briefcasePic from '../public/icons8-business-30 (2).png'
+import { useRouter } from 'next/router';
 
-export default function NavBar( { queryFunction, modalFunction} ) {
+export default function NavBar( { queryFunction, modalFunction, name} ) {
   const [query, setQuery] = useState();
+  const router = useRouter();
+
   
   const onFormSubmit = e => {
     e.preventDefault();
     queryFunction(query);
   }
 
+  const goToPage = page => {
+    router.push(`/lists/${page}`, undefined, { shallow: true });
+  }
+
   return (
-    <Navbar variant="tabs" className={styles.navBar}>
+    <Navbar variant="tabs" className={[`shadow p-3 mb-5 bg-white rounded`, styles.navBar]}>
       <Link href="/">
         <div className={styles.logo}>
           <Image
@@ -27,32 +36,54 @@ export default function NavBar( { queryFunction, modalFunction} ) {
         </div>
       </Link>
       <Nav className={`me-auto`}>
-        {/* <NavDropdown title="רשימת אנ״ש" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/?city=ירושלים">ירושלים</NavDropdown.Item>
-            <NavDropdown.Item href="/?city=בני ברק">בני ברק</NavDropdown.Item>
-            <NavDropdown.Item href="/?city=אשדוד">אשדוד</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="/?city=ברוקלין">ברוקלין</NavDropdown.Item>
-            <NavDropdown.Item href="/?city=מונסי">מונסי</NavDropdown.Item>
-            <NavDropdown.Item href="/?city=מונטריאול">מונטריאול</NavDropdown.Item>
-        </NavDropdown> */}
-        <Nav.Item>
-          <Nav.Link href="/" className={styles.navLink}>רשימת אנ״ש</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-1" href='business' className={styles.navLink}>רשימת עסקים</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
+      <Nav.Item>
+        {/* <Nav.Link href="/" className={styles.navLink}> |  */}
+          {/* <Image
+            src={memberPic}
+            alt="Picture of the author"
+            width={25}
+            height={25}
+          /> */}
+        {/* </Nav.Link> */}
+        <Button onClick={() => goToPage('members')} className={styles.updateMember}>
+          <Image
+            src={memberPic}
+            alt="Picture of the author"
+            width={25}
+            height={25}
+          />
+          רשימת אנשים</Button>
+      </Nav.Item>
+      {/* <NavItem className={styles.navLink}>
+        |
+      </NavItem> */}
+      <Nav.Item>
+        {/* <Nav.Link eventKey="link-1" href='business' className={styles.navLink}> */}
+        {/* <Image
+          src={briefcasePic}
+          width={25}
+          height={25}
+        /> */}
+        <Button onClick={() => goToPage('business')} className={styles.updateMember}>
+          <Image
+            src={briefcasePic}
+            width={25}
+            height={25}
+          />
+          רשימת עסקים</Button>
+        {/* </Nav.Link> */}
+      </Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link eventKey="link-2"  href='simches-board' className={styles.navLink}>לוח שמחות</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-2"  href='notice-board' className={styles.navLink}>לוח מודעות</Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
        </Nav>
       <Form className={`d-flex ${styles.form}`} onSubmit={onFormSubmit}>
         <FormControl
           type="search"
-          placeholder="חפש לפי: שם/משפחה/עיר/בן/חתן"
+          placeholder={name == 'members' ? 'חפש לפי: שם/משפחה/עיר/בן/חתן' : 'חפש לפי: שם/תחום עסק או עיר'}
           className="me-2"
           aria-label="Search"
           onChange={(e) => setQuery(e.target.value)}
@@ -60,7 +91,7 @@ export default function NavBar( { queryFunction, modalFunction} ) {
         <Button className={styles.updateMember} variant="outline-success" onClick={() => queryFunction(query)}>חפש</Button>
       </Form>
       <Button variant="primary" onClick={() => modalFunction(true)} className={styles.updateMember}>
-        עדכון/הוספת איש קשר
+        עדכון/הוספת {name == 'members' ? 'איש קשר' : 'עסק'}
       </Button>
     </Navbar>
   )

@@ -29,6 +29,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-jss": "^8.0.0",
     "react-redux": "^7.2.6",
+    "react-router-dom": "^6.3.0",
     "react-slick": "^0.29.0",
     "reactstrap": "^9.0.1",
     "slick-carousel": "^1.8.1",

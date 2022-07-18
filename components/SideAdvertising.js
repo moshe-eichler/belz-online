@@ -3,16 +3,16 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-var settings = {
+const settings = {
     dots: false,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 7000,
-    autoplaySpeed: 500,
+    speed: 5000,
+    autoplaySpeed: 100,
     vertical: true,
-    cssEase: "ease"
+    cssEase: "linear"
 };
 
 export default function SideAdvertising({ side }) {
@@ -25,9 +25,7 @@ export default function SideAdvertising({ side }) {
         <>
             <Slider {...settings}>
                 {images.map((image, i) => 
-                    <div key={i} className={`side-ad`}>
-                        <Image key={i} src={image.default.src} layout="responsive" width={100} height={120} />
-                    </div>
+                    <Image key={i} src={image.default.src} layout="responsive" width={100} height={120} />
                 )}
             </Slider>
         </>

@@ -18,25 +18,19 @@ a {
 }
 
 .sideAdRight {
-  width: 14%;
-  height: 85%;
-  position: fixed;
-  margin-top: 2%;
   right: 1%;
-  border:1px solid black;
-  overflow: auto;
 }
 
 .sideAdLeft {
-  width: 14%;
-  height: 85%;
-  position: fixed;
-  margin-top: 2%;
   left: 1%;
-  border:1px solid black;
-  overflow: auto;
 }
 
 .sideAdRight, .sideAdLeft {
-  overflow: hidden;
+  margin-top: 90px;
+  margin-bottom: 10px;
+  width: 14%;
+  height: 85%;
+  position: fixed;
+  /* border:1px solid black; */
+  overflow: auto, hidden;
 }

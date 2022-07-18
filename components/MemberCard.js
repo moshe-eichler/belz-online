@@ -49,7 +49,7 @@ export default function MemberCard({ member, modalFunction}) {
     } else {
         return (
             <>
-                <Card className={styles.card}>
+                <Card className={`shadow p-3 mb-5 bg-white rounded ${styles.card}`}>
                     <CardBody className='bg-light'>
                         <CardTitle>{(member.title || '') + ' ' +  (member.first_name || '') + ' ' + (member.family_name || '')}</CardTitle>
                         <CardText>
@@ -60,7 +60,7 @@ export default function MemberCard({ member, modalFunction}) {
                             <span>{'מיקוד: ' + (member.zip || '')}</span>
                             <br />
                             <br />
-                            <Button variant="secondary" id={member.ID} onClick={() => changeText(member.ID)}>
+                            <Button variant="secondary" id={member.ID} onClick={() => changeText(member.ID)} className={styles.showPhone}>
                                 {phone_number}
                                 {new_line}
                                 {mobile_phone}
