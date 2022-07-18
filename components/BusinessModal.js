@@ -31,8 +31,8 @@ export default function BuisnessModal(props) {
             email
         }
         
-        const url = 'https://anash.vercel.app/api/contact'
-        // const url = 'http://localhost:3000/api/contact'
+        // const url = 'https://anash.vercel.app/api/contact'
+        const url = 'http://localhost:3000/api/contact'
         fetch(url, {
             method: 'POST',
             headers: {
