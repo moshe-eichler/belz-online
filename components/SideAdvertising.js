@@ -12,7 +12,7 @@ const settings = {
     speed: 5000,
     autoplaySpeed: 100,
     vertical: true,
-    cssEase: "linear"
+    cssEase: "ease"
 };
 
 export default function SideAdvertising({ side }) {
