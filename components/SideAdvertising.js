@@ -21,25 +21,11 @@ const settings = {
     prevArrow: <SampleArrow />
 };
 
-// const settings = {
-//     dots: false,
-//     infinite: true,
-//     slidesToShow: 3,
-//     slidesToScroll: 1,
-//     autoplay: true,
-//     speed: 7000,
-//     autoplaySpeed: 100,
-//     vertical: true,
-//     cssEase: "ease"
-// };
-
 export default function SideAdvertising({ side }) {
     function importAll(r) {
         return r.keys().map(r);
     }
     const images = (side == 'right') ? importAll(require.context('../public/advertising/right', false, /\.(png|jpe?g|svg)$/)) : importAll(require.context('../public/advertising/left', false, /\.(png|jpe?g|svg)$/));
-    // const rightImages = importAll(require.context('../public/advertising/right', false, /\.(png|jpe?g|svg)$/));
-    // const leftImages = importAll(require.context('../public/advertising/left', false, /\.(png|jpe?g|svg)$/));
 
     return (
         <>
