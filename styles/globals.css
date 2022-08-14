@@ -14,23 +14,35 @@ a {
 
 .content {
   width: 70%;
-  margin-right: 15%;
+  margin-right: 5%;
 }
 
 .sideAdRight {
-  right: 1%;
+  left: 5%;
+  top: 45%;
 }
 
 .sideAdLeft {
-  left: 1%;
+  left: 5%;
+  top: 5%
 }
 
 .sideAdRight, .sideAdLeft {
-  margin-top: 90px;
-  margin-bottom: 10px;
-  width: 14%;
-  height: 85%;
+  margin-top: 6%;
+  width: 15%;
+  height: 37%;
   position: fixed;
-  /* border:1px solid black; */
-  overflow: auto, hidden;
+  /* background-color: grey; */
+  /* border:10px solid #FFC300; */
+  border:10px solid grey;
+  /* overflow: auto, hidden; */
+}
+
+
+/* hide scrollbar */
+*{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
 }

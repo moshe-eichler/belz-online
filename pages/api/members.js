@@ -6,8 +6,8 @@ const getMembers = async (req, res) => {
     let queryObject = url.parse(req.url, true).query;
     let querySearch = '';
     if (queryObject.querySearch) querySearch = '\"' + queryObject.querySearch.replace(/ /g, '\" \"') + '\"';
-    let limit = queryObject.limit;
-    let skip = queryObject.skip;
+    let limit = Math.min(queryObject.limit, 40); // To avoid scraping huge records.
+    let skip = Math.max(queryObject.skip, 0); // To avoid skip in minus
 
     try {
         // connect to the database
@@ -18,9 +18,9 @@ const getMembers = async (req, res) => {
         if (querySearch) {
             members = await db
             .collection('anash_belz')
-            .find({ $text: { $search: querySearch} })
-            .project( { _id:0, phone_number:0, mobile_phone:0 })
-            .sort({ family_name: 1, first_name: 1})
+            .find({ $text: { $search: querySearch } })
+            .project( { _id:0, phone_number:0, mobile_phone:0, score: { $meta: 'textScore' } })
+            .sort({ score: { $meta: 'textScore'}, family_name: 1, first_name: 1 })
             .limit(limit ? Number(limit) : 99999)
             .skip(skip ? Number(skip) : 0)
             .toArray();

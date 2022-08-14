@@ -3,29 +3,49 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+function SampleArrow(props) {
+    const { style } = props;
+    return (
+        <div
+            style={{ ...style, display: "none" }}
+        />
+    );
+}
+  
 const settings = {
-    dots: false,
+    fade: true,
     infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
     speed: 5000,
-    autoplaySpeed: 100,
-    vertical: true,
-    cssEase: "linear"
+    autoplay: true,
+    nextArrow: <SampleArrow />,
+    prevArrow: <SampleArrow />
 };
+
+// const settings = {
+//     dots: false,
+//     infinite: true,
+//     slidesToShow: 3,
+//     slidesToScroll: 1,
+//     autoplay: true,
+//     speed: 7000,
+//     autoplaySpeed: 100,
+//     vertical: true,
+//     cssEase: "ease"
+// };
 
 export default function SideAdvertising({ side }) {
     function importAll(r) {
         return r.keys().map(r);
     }
     const images = (side == 'right') ? importAll(require.context('../public/advertising/right', false, /\.(png|jpe?g|svg)$/)) : importAll(require.context('../public/advertising/left', false, /\.(png|jpe?g|svg)$/));
+    // const rightImages = importAll(require.context('../public/advertising/right', false, /\.(png|jpe?g|svg)$/));
+    // const leftImages = importAll(require.context('../public/advertising/left', false, /\.(png|jpe?g|svg)$/));
 
     return (
         <>
             <Slider {...settings}>
                 {images.map((image, i) => 
-                    <Image key={i} src={image.default.src} layout="responsive" width={100} height={120} />
+                    <Image key={i} src={image.default.src} layout="responsive" width={100} height={124} />
                 )}
             </Slider>
         </>

@@ -1,112 +1,66 @@
-import { useState } from 'react'
 import { Button, Modal, Container, Row, Col} from 'react-bootstrap';
 import styles from '../styles/Home.module.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function VerticallyCenteredModal(props) {
-    const [pName, setPName] = useState('');
-    const [fName, setFName] = useState('');
-    const [address, setAddress] = useState('');
-    const [number, setNumber] = useState('');
-    const [city, setCity] = useState('');
-    const [phone, setPhone] = useState('');
-    const [cellphone, setCellphone] = useState('');
-    const [father, setFather] = useState('');
-    const [fatherInLaw, setFatherInLaw] = useState('');
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        console.log('Sending')
-        let data = {
-            pName,
-            fName,
-            address,
-            number,
-            city,
-            phone,
-            cellphone,
-            father,
-            fatherInLaw
-        }
-        const url = 'https://anash.vercel.app/api/contact'
-        // const url = 'http://localhost:3000/api/contact'
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 'type': 'members', 'data': data })
-        }).then((res) => {
-            console.log('Response received')
-            if (res.status === 200) {
-                console.log('Response succeeded!')
-                setPName('');
-                setFName('');
-                setAddress('');
-                setNumber('');
-                setCity('');
-                setPhone('');
-                setCellphone('');
-                setFather('');
-                setFatherInLaw('');
-            }
-        })
-    }
-
     return (
-        <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
-            <Modal.Header closeButton className={styles.modalHeader}>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    עדכון/הוספת איש קשר
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="show-grid">
-                <Container>
-                    <Row>
-                        <Col md={6}>
-                            <input placeholder='שם פרטי' name='firstName' onChange={(e)=>{setPName(e.target.value)}} className='form-control' required/>
-                        </Col>
-                        <Col md={6}>
-                            <input placeholder='משפחה' name='familyName' onChange={(e)=>{setFName(e.target.value)}} className='form-control' required/>
-                        </Col>
-                    </Row>
-                    <br />
-                    <Row>
-                    <Col md={6}>
-                            <input placeholder='רחוב' name='address' onChange={(e)=>{setAddress(e.target.value)}} className='form-control' required/>
-                        </Col>
-                        <Col md={2}>
-                            <input placeholder='מס׳' name='number' onChange={(e)=>{setNumber(e.target.value)}} className='form-control' required/>
-                        </Col>
-                        <Col md={4}>
-                            <input placeholder='עיר' name='city' onChange={(e)=>{setCity(e.target.value)}} className='form-control' required/>
-                        </Col>
-                    </Row>
-                    <br />
-                    <Row>
-                        <Col md={6}>
-                            <input placeholder='טלפון' name='phone' onChange={(e)=>{setPhone(e.target.value)}} className='form-control' required/>
-                        </Col>
-                        <Col md={6}>
-                            <input placeholder='טלפון נייד' name='cellphone' onChange={(e)=>{setCellphone(e.target.value)}} className='form-control' required/>
-                        </Col>
-                    </Row>
-                    <br />
-                    <Row>
-                        <Col md={6}>
-                            <input placeholder='בן' name='father' onChange={(e)=>{setFather(e.target.value)}} className='form-control' required/>
-                        </Col>
-                        <Col md={6}>
-                            <input placeholder='חתן' name='fatherInLaw' onChange={(e)=>{setFatherInLaw(e.target.value)}} className='form-control' required/>
-                        </Col>
-                    </Row>
-                </Container>
-            </Modal.Body>
-            <Modal.Footer className={styles.modalHeader}>
-                <Button onClick={props.onHide} className={styles.modalButton}>סגור</Button>
-                <Button onClick={(e) => {props.onHide(); handleSubmit(e)}} className={styles.modalButton}>שלח</Button>
-            </Modal.Footer>
-        </Modal>
+        <>
+            <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
+                <form action="http://localhost:3000/api/contact?type=members" method="post" onSubmit={props.onHide} target="votar">
+                    <Modal.Header closeButton className={styles.modalHeader}>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            עדכון/הוספת איש קשר
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="show-grid">
+                        <Container>
+                            <Row>
+                                <Col md={6}>
+                                    <input placeholder='שם פרטי' name='firstName' className='form-control' required/>
+                                </Col>
+                                <Col md={6}>
+                                    <input placeholder='משפחה' name='familyName' className='form-control' required/>
+                                </Col>
+                            </Row>
+                            <br />
+                            <Row>
+                            <Col md={6}>
+                                    <input placeholder='רחוב' name='address' className='form-control' required/>
+                                </Col>
+                                <Col md={2}>
+                                    <input placeholder='מס׳' name='number' className='form-control' required/>
+                                </Col>
+                                <Col md={4}>
+                                    <input placeholder='עיר' name='city' className='form-control' required/>
+                                </Col>
+                            </Row>
+                            <br />
+                            <Row>
+                                <Col md={6}>
+                                    <input placeholder='טלפון' name='phone' className='form-control' required/>
+                                </Col>
+                                <Col md={6}>
+                                    <input placeholder='טלפון נייד' name='cellphone' className='form-control' required/>
+                                </Col>
+                            </Row>
+                            <br />
+                            <Row>
+                                <Col md={6}>
+                                    <input placeholder='בן' name='father' className='form-control' required/>
+                                </Col>
+                                <Col md={6}>
+                                    <input placeholder='חתן' name='fatherInLaw' className='form-control' required/>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Modal.Body>
+                    <Modal.Footer className={styles.modalHeader}>
+                        <Button onClick={props.onHide} className={styles.modalButton}>סגור</Button>
+                        <Button type='submit' className={styles.modalButton}>שלח</Button>
+                    </Modal.Footer>
+                </form>
+            </Modal>
+            <iframe name="votar" style={{display: 'none'}}></iframe> {/* https://stackoverflow.com/questions/2866063/submit-form-without-page-reloading#answer-26380651 */}
+        </>
     );
 }

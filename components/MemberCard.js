@@ -3,14 +3,19 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
-
+import { style } from "@material-ui/system";
+import Table from 'react-bootstrap/Table';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function MemberCard({ member, modalFunction}) {
-    const [phone_number, setPhoneNumber] = useState("הצג מספרי טלפון");
-    const [new_line, setNewLine] = useState("");
+    // Global Variables
+    const [message, setMessage] = useState("הצג מספרי טלפון");
+    const [phone_number, setPhoneNumber] = useState("");
     const [mobile_phone, setMobilePhone] = useState("");
-    const [more_info, setMoreInfo] = useState("");
+    const [clicked, setClicked] = useState(false);
 
+    // Helper Functions
     const checkEmptyValues = () => {
         const important_info = [member.family_name, member.street, member.number, member.city, member.country, member.phone_number, member.mobile_phone]
         if (important_info.includes(undefined)) {
@@ -20,22 +25,43 @@ export default function MemberCard({ member, modalFunction}) {
         }
     }
 
+    const copyToClipboard = (text_to_copy) => {
+        if (text_to_copy) {
+            navigator.clipboard.writeText(text_to_copy);
+            toast.success("!מספר הטלפון הועתק בהצלחה", {position: "bottom-right"});    
+        }
+    }
+    
+
     const changeText = async (memberId) => {
-        if (new_line) return;
+        if (clicked) return;
 
-        setPhoneNumber(<div className={styles.loaderSpin}></div>);
+        setClicked(true);
+        setMessage(<div className={styles.loaderSpin}></div>);
 
-        const url = new URL('https://anash.vercel.app/api/phone-by-memberid');
-        // const url = new URL('http://localhost:3000/api/phone-by-memberid');
+        // const url = new URL('https://anash.vercel.app/api/phone-by-memberid');
+        const url = new URL('http://localhost:3000/api/phone-by-memberid');
         url.searchParams.append('memberid', memberId);
 
         const response = await fetch(url);
         const phone_numbers = await response.json();
-        
-        setPhoneNumber('בית: ' + (phone_numbers.message.phone_number || ''));
-        setNewLine(<br />);
-        setMobilePhone('נייד: ' + (phone_numbers.message.mobile_phone || ''));
-        checkEmptyValues();
+
+        const phone_number = phone_numbers.message.phone_number;
+        const mobile_phone = phone_numbers.message.mobile_phone;
+
+        setPhoneNumber(phone_number);
+        setMobilePhone(mobile_phone);
+        setMessage(undefined);
+
+        if (phone_number) {
+            document.getElementById(`phone_${member.ID}`).style.cursor = 'copy';
+        }
+        if (mobile_phone) {
+            document.getElementById(`mobile_${member.ID}`).style.cursor = 'copy';
+        }
+
+        document.getElementById(`button_${memberId}`).style.cursor = 'default';
+        document.getElementById(`table_${memberId}`).style.display = 'block';
     }
     
     if (member.type) {
@@ -60,11 +86,20 @@ export default function MemberCard({ member, modalFunction}) {
                             <span>{'מיקוד: ' + (member.zip || '')}</span>
                             <br />
                             <br />
-                            <Button variant="secondary" id={member.ID} onClick={() => changeText(member.ID)} className={styles.showPhone}>
-                                {phone_number}
-                                {new_line}
-                                {mobile_phone}
-                                {more_info}
+                            <Button variant="secondary" id={`button_${member.ID}`} onClick={() => changeText(member.ID)} className={styles.showPhone}>
+                                {message}
+                                <Table borderless id={`table_${member.ID}`} style={{display: 'none'}} className={styles.table}>
+                                    <tbody>
+                                        <tr>
+                                            <td className={styles.table}>בית: </td>
+                                            <td className={styles.table} id={`phone_${member.ID}`} onClick={e => copyToClipboard(e.target.textContent)}>{phone_number}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles.table}>נייד: </td>
+                                            <td className={styles.table} id={`mobile_${member.ID}`} onClick={e => copyToClipboard(e.target.textContent)}>{mobile_phone}</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
                             </Button>
                             <br />
                             <br />

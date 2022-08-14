@@ -1,5 +1,4 @@
 import SideAdvertising from './SideAdvertising'
-import NavBar from './NavBar'
 
 export default function Layout({ children }) {
   return (
