@@ -12,8 +12,8 @@ export default function Content({ data, filters, modalFunction}) {
     const [noFound, setNoFound] = useState('');
 
     const getMembers = async () => { 
-        // const url = new URL(`https://anash.vercel.app/api/members`);
-        const url = new URL(`http://localhost:3000/api/members`);
+        const url = new URL(`https://anash.vercel.app/api/members`);
+        // const url = new URL(`http://localhost:3000/api/members`);
         url.searchParams.append('limit', 40);
         url.searchParams.append('skip', members.length);
         if (filters) url.searchParams.append('querySearch', filters);

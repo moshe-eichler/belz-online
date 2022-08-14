@@ -5,7 +5,7 @@ export default function BuisnessModal(props) {
     return (
         <>
             <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
-                <form action="http://localhost:3000/api/contact?type=business" method="post" enctype="multipart/form-data" onSubmit={props.onHide} target="votar">
+                <form action="https://anash.vercel.app/api/contact?type=business" method="post" enctype="multipart/form-data" onSubmit={props.onHide} target="votar">
                     <Modal.Header closeButton className={styles.modalHeader}>
                         <Modal.Title id="contained-modal-title-vcenter">
                             עדכון/הוספת עסק
