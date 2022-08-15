@@ -15,27 +15,26 @@ export default async function (req, res) {
 
     let mailData = null;
 
+    // Parse the form
+    const form = new multiparty.Form()
+    const data = await new Promise((resolve, reject) => {
+        form.parse(req, function (err, fields, files) {
+        if (err) reject({ err })
+        resolve({ fields, files })
+        })
+    })
+
     if (req.query.type == 'members') {
         mailData = {
             from: 'belzeanash@gmail.com',
             to: 'belzeanash@gmail.com',
             subject: `עדכון/הוספת מנוי`,
-            html: `<p>שם פרטי: <b>${req.body.firstName}</b> שם משפחה: <b>${req.body.familyName}</b></p>
-            <p>כתובת: <b>${req.body.address}</b> מספר: <b>${req.body.number}</b> עיר: <b>${req.body.city}</b></p>
-            <p>טלפון: <b>${req.body.phone}</b> טלפון נייד: <b>${req.body.cellphone}</b></p>
-            <p>בן: <b>${req.body.father}</b> חתן: <b>${req.body.fatherInLaw}</b></p>`
+            html: `<p>שם פרטי: <b>${data.fields.firstName}</b> שם משפחה: <b>${data.fields.familyName}</b></p>
+            <p>כתובת: <b>${data.fields.address}</b> מספר: <b>${data.fields.number}</b> עיר: <b>${data.fields.city}</b></p>
+            <p>טלפון: <b>${data.fields.phone}</b> טלפון נייד: <b>${data.fields.cellphone}</b></p>
+            <p>בן: <b>${data.fields.father}</b> חתן: <b>${data.fields.fatherInLaw}</b></p>`
         }
     } else {
-
-        // Parse the form
-        const form = new multiparty.Form()
-        const data = await new Promise((resolve, reject) => {
-            form.parse(req, function (err, fields, files) {
-            if (err) reject({ err })
-            resolve({ fields, files })
-            })
-        })
-
         mailData = {
             from: 'belzeanash@gmail.com',
             to: 'belzeanash@gmail.com',
@@ -52,6 +51,8 @@ export default async function (req, res) {
             ]
         }
     }
+
+    console.log(mailData);
     
     transporter.sendMail(mailData, function (err, info) {
         console.log('sending now');
