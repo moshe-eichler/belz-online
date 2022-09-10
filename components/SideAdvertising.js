@@ -15,7 +15,7 @@ function SampleArrow(props) {
 const settings = {
     fade: true,
     infinite: true,
-    speed: 5000,
+    speed: 9999,
     autoplay: true,
     nextArrow: <SampleArrow />,
     prevArrow: <SampleArrow />

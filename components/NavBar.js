@@ -83,7 +83,7 @@ export default function NavBar( { queryFunction, modalFunction, name} ) {
       <Form className={`d-flex ${styles.form}`} onSubmit={onFormSubmit}>
         <FormControl
           type="search"
-          placeholder={name == 'members' ? 'חפש לפי: שם/משפחה/עיר/בן/חתן' : 'חפש לפי: שם/תחום עסק או עיר'}
+          placeholder={ name == 'business' ? 'חפש לפי: שם/תחום עסק או עיר' : 'חפש לפי: שם/משפחה/עיר/בן/חתן' }
           className="me-2"
           aria-label="Search"
           onChange={(e) => setQuery(e.target.value)}

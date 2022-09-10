@@ -39,8 +39,7 @@ export default function MemberCard({ member, modalFunction}) {
         setClicked(true);
         setMessage(<div className={styles.loaderSpin}></div>);
 
-        const url = new URL('https://anash.vercel.app/api/phone-by-memberid');
-        // const url = new URL('http://localhost:3000/api/phone-by-memberid');
+        const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/api/phone-by-memberid`);
         url.searchParams.append('memberid', memberId);
 
         const response = await fetch(url);

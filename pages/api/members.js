@@ -19,7 +19,7 @@ const getMembers = async (req, res) => {
             members = await db
             .collection('anash_belz')
             .find({ $text: { $search: querySearch } })
-            .project( { _id:0, phone_number:0, mobile_phone:0, score: { $meta: 'textScore' } })
+            .project( { _id:0, score: { $meta: 'textScore' } })
             .sort({ score: { $meta: 'textScore'}, family_name: 1, first_name: 1 })
             .limit(limit ? Number(limit) : 99999)
             .skip(skip ? Number(skip) : 0)
