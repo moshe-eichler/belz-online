@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { Navbar, Nav, Form, FormControl, Button, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import styles from '../styles/Home.module.css';
 import profilePic from '../public/logo-removebg-preview.png'
 import memberPic from '../public/icons8-user-male-30 (2).png'

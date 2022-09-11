@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 export default function HomeTest(props) {
     const [query, setQuery] = useState();
     const [modalShow, setModalShow] = useState(false);
-    const [content, setContent] = useState(props.members)
+    // const [content, setContent] = useState(props.members)
     const router = useRouter();
     const { list_name } = router.query
 
@@ -27,7 +27,7 @@ export default function HomeTest(props) {
                         onHide={() => setModalShow(false)}
                     />
                     <div className="content">
-                        <Content data={content} filters={query} modalFunction={setModalShow}/>
+                        <Content data={props.members} filters={query} modalFunction={setModalShow}/>
                     </div>
                 </>
             ):(

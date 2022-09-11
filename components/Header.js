@@ -11,11 +11,13 @@ export default function Header() {
       <nav>
         {navLinks.map((link, index) => {
           return (
-            <ul>
-              <Link href={link.path}>
-                <li key={index}>{link.name}</li>
-              </Link>
-            </ul>
+            <>
+              <ul>
+                <Link href={link.path}>
+                  <li key={index}>{link.name}</li>
+                </Link>
+              </ul>
+            </>
           );
         })}
       </nav>

@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 export default function Home(props) {
     const [query, setQuery] = useState();
     const [modalShow, setModalShow] = useState(false);
-    const [content, setContent] = useState(props.members)
+    // const [content, setContent] = useState(props.members)
     const router = useRouter();
 
     return (
@@ -29,7 +29,7 @@ export default function Home(props) {
                 </div>
             ):(
                 <div className="content">
-                    <Content data={content} filters={query} modalFunction={setModalShow}/>
+                    <Content data={props.members} filters={query} modalFunction={setModalShow}/>
                 </div>
             )}
         </>

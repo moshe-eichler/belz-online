@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Button, Modal, Container, Row, Col} from 'react-bootstrap';
+import React, { useState } from "react";
+import { Button, Modal} from 'react-bootstrap';
 import styles from '../styles/Home.module.css';
 
 export default function Business( { modalFunction } ) {
@@ -63,4 +63,4 @@ export default function Business( { modalFunction } ) {
             </Modal>
         </>
     );
-};
+}

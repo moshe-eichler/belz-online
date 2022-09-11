@@ -5,7 +5,7 @@ export default function BuisnessModal(props) {
     return (
         <>
             <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
-                <form action="https://anash.vercel.app/api/contact?type=business" method="post" enctype="multipart/form-data" onSubmit={props.onHide} target="votar">
+                <form action="https://anash.vercel.app/api/contact?type=business" method="post" encType="multipart/form-data" onSubmit={props.onHide} target="votar">
                     <Modal.Header closeButton className={styles.modalHeader}>
                         <Modal.Title id="contained-modal-title-vcenter">
                             עדכון/הוספת עסק
@@ -18,7 +18,7 @@ export default function BuisnessModal(props) {
                                     <input placeholder='שם העסק' name='businessName' className='form-control' required />
                                 </Col>
                                 <Col md={6}>
-                                    <select defaultValue='תחום העסק' name='categoryName' class="form-select" aria-label="Default select example">
+                                    <select defaultValue='תחום העסק' name='categoryName' className="form-select" aria-label="Default select example">
                                         <option disabled hidden>תחום העסק</option>
                                         <option value="finance">פיננסים</option>
                                         <option value="clothing">ביגוד</option>
@@ -70,7 +70,7 @@ export default function BuisnessModal(props) {
                                 <Col md={2}>
                                 </Col>
                                 <Col md={8}>
-                                    <div class="input-group mb-3">
+                                    <div className="input-group mb-3">
                                         <input name='pic' type="file" />
                                     </div>
                                 </Col>

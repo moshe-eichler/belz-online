@@ -1,6 +1,6 @@
 const { connectToDatabase } = require('../../lib/mongodb');
-const ObjectId = require('mongodb').ObjectId;
-const url = require('url');
+// const ObjectId = require('mongodb').ObjectId;
+// const url = require('url');
 
 export default async function getMembers(req, res){
     // const queryObject = url.parse(req.url, true).query;

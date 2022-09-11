@@ -65,4 +65,4 @@ export default function Content({ data, filters, modalFunction}) {
             {<div className={styles.loader}><h3>{noFound}</h3></div>}
         </>
     );
-};
+}
