@@ -12,7 +12,6 @@ export default function Content({ data, filters, modalFunction}) {
     const [noFound, setNoFound] = useState('');
 
     const getMembers = async () => { 
-        console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/api/members`);
         const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/api/members`);
         url.searchParams.append('limit', 40);
         url.searchParams.append('skip', members.length);
@@ -28,7 +27,7 @@ export default function Content({ data, filters, modalFunction}) {
         setCallNumber((callNumber) => callNumber + 1)
     }
 
-    useEffect( async () => {
+    useEffect(async () => {
         if (!callNumber & !filters) return; // To disable calling in the first render.
 
         setMoreResults(true);
@@ -36,7 +35,7 @@ export default function Content({ data, filters, modalFunction}) {
         if (members.length <= 40) infinite(); // In this case InfiniteScroll component will not call the infinite function, So we need to call it manuaaly.
     }, [filters])
 
-    useEffect( async () => {
+    useEffect(async () => {
         if (!callNumber) return; // To disable calling in the first render.
 
         setNoFound('');
@@ -59,7 +58,7 @@ export default function Content({ data, filters, modalFunction}) {
                 loader={<div className={styles.loader}><h3>טוען אנשי קשר...</h3></div>}
             >
                 <CardDeck className={styles.content}>
-                    {members.map((member, i) => <MemberCard member={member} key={i} modalFunction={modalFunction}/>)}
+                    {members.map((member, i) => <MemberCard member={member} key={i} modalFunction={modalFunction} />)}
                 </CardDeck>
             </InfiniteScroll>
             {<div className={styles.loader}><h3>{noFound}</h3></div>}

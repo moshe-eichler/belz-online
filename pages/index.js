@@ -17,7 +17,7 @@ export default function Home(props) {
             <Head>
                 <title>רשימת אנ״ש</title>
             </Head>
-            <NavBar queryFunction={setQuery} modalFunction={setModalShow}/>
+            <NavBar queryFunction={setQuery} modalFunction={setModalShow} />
             <VerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
@@ -27,9 +27,9 @@ export default function Home(props) {
                     {console.log(router.query.page)}
                     <Business />
                 </div>
-            ):(
+            ) : (
                 <div className="content">
-                    <Content data={props.members} filters={query} modalFunction={setModalShow}/>
+                    <Content data={props.members} filters={query} modalFunction={setModalShow} />
                 </div>
             )}
         </>
@@ -40,9 +40,9 @@ export const getStaticProps = async () => {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/members?limit=40`
     const data = await fetch(url)
         .then((response) => response.json());
-    
+
     const members = data.message
-    
+
     return {
         props: { members }
     };

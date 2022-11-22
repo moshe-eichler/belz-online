@@ -29,10 +29,10 @@ export default function MemberCard({ member }) {
     const copyToClipboard = (text_to_copy) => {
         if (text_to_copy) {
             navigator.clipboard.writeText(text_to_copy);
-            toast.success("!מספר הטלפון הועתק בהצלחה", {position: "bottom-right"});    
+            toast.success("!מספר הטלפון הועתק בהצלחה", { position: "bottom-right" });
         }
     }
-    
+
 
     const changeText = async (memberId) => {
         if (clicked) return;
@@ -63,15 +63,15 @@ export default function MemberCard({ member }) {
         document.getElementById(`button_${memberId}`).style.cursor = 'default';
         document.getElementById(`table_${memberId}`).style.display = 'block';
     }
-    
+
 
     return (
         <>
             <Card className={`shadow p-3 mb-5 bg-white rounded ${styles.card}`}>
                 <CardBody className='bg-light'>
-                    <CardTitle>{(member.title || '') + ' ' +  (member.first_name || '') + ' ' + (member.family_name || '')}</CardTitle>
+                    <CardTitle>{(member.title || '') + ' ' + (member.first_name || '') + ' ' + (member.family_name || '')}</CardTitle>
                     <CardText>
-                        <span>{(member.street || '')+ ' ' + (member.number || '')}</span>
+                        <span>{(member.street || '') + ' ' + (member.number || '')}</span>
                         <br />
                         <span>{(member.city || '') + ' - ' + (member.country || '')}</span>
                         <br />
@@ -80,7 +80,7 @@ export default function MemberCard({ member }) {
                         <br />
                         <Button variant="secondary" id={`button_${member.ID}`} onClick={() => changeText(member.ID)} className={styles.showPhone}>
                             {message}
-                            <Table borderless id={`table_${member.ID}`} style={{display: 'none'}} className={styles.table}>
+                            <Table borderless id={`table_${member.ID}`} style={{ display: 'none' }} className={styles.table}>
                                 <tbody>
                                     <tr>
                                         <td className={styles.table}>בית: </td>
