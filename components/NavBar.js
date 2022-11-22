@@ -24,7 +24,7 @@ export default function NavBar( { queryFunction, modalFunction, name} ) {
 
   return (
     <Navbar variant="tabs" className={[`shadow p-3 mb-5 bg-white rounded`, styles.navBar]}>
-      <Link href="/">
+      <Link href="/" passHref>
         <div className={styles.logo}>
           <Image
             src={profilePic}

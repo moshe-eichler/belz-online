@@ -2,7 +2,6 @@
 import Avatar from 'react-avatar';
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import styles from '../styles/Home.module.css';
-import Link from 'next/link'
 
 export default function BusinessCard({ business }) {
     return (
@@ -11,7 +10,7 @@ export default function BusinessCard({ business }) {
                 <CardBody className='bg-light'>
                     <CardTitle>
                         {/* <Avatar alt="business picture" src={business.picture} /> */}
-                        <a href={business.site} target='_blank'>
+                        <a href={business.site} target='_blank' rel="noreferrer">
                             <Avatar name={business.name} src={business.picture} round={true} style={{cursor: 'pointer'}}/>
                         </a>
                     </CardTitle>
