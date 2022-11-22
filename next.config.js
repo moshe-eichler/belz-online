@@ -1,13 +1,22 @@
 
-module.exports = {
-  reactStrictMode: true,
+export const reactStrictMode = true
+export async function redirects() {
+  return [
+    {
+      source: '/',
+      destination: '/lists/members',
+      permanent: true,
+    },
+  ]
 }
-
-// module.exports = {
-//   webpack5: true,
-//   webpack: (config) => {
-//     config.resolve.fallback = { fs: false, path: false, crypto: false, http: false, https: false };
-
-//     return config;
-//   },
-// };
+export const images = {
+  allowFutureImage: true,
+  remotePatterns: [
+    {
+      protocol: 'https',
+      hostname: 'drive.google.com/file/d/17nxvGrun9uS_LmWo2kRESz2yD-3DvY5S/view',
+      port: '',
+      pathname: '/**',
+    },
+  ],
+}

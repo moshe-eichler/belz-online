@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 export default function HomeTest(props) {
     const [query, setQuery] = useState();
     const [modalShow, setModalShow] = useState(false);
-    // const [content, setContent] = useState(props.members)
     const router = useRouter();
     const { list_name } = router.query
 
@@ -19,7 +18,7 @@ export default function HomeTest(props) {
             <Head>
                 <title>רשימת אנ״ש</title>
             </Head>
-            <NavBar queryFunction={setQuery} modalFunction={setModalShow} name={list_name}/>
+            <NavBar queryFunction={setQuery} modalFunction={setModalShow} name={list_name} />
             {list_name == 'members' ? (
                 <>
                     <VerticallyCenteredModal
@@ -27,17 +26,17 @@ export default function HomeTest(props) {
                         onHide={() => setModalShow(false)}
                     />
                     <div className="content">
-                        <Content data={props.members} filters={query} modalFunction={setModalShow}/>
+                        <Content data={props.members} filters={query} modalFunction={setModalShow} />
                     </div>
                 </>
-            ):(
+            ) : (
                 <>
                     <BusinessModal
                         show={modalShow}
                         onHide={() => setModalShow(false)}
                     />
                     <div className="content">
-                        <Business modalFunction={setModalShow} />
+                        <Business data={props.business} filters={query} />
                     </div>
                 </>
             )}
@@ -46,14 +45,18 @@ export default function HomeTest(props) {
 }
 
 export const getStaticProps = async () => {
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/members?limit=40`
-    const data = await fetch(url)
+    const membersURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/members?limit=40`;
+    const membersData = await fetch(membersURL)
         .then((response) => response.json());
-    
-    const members = data.message;
-    
+    const members = membersData.message;
+
+    const businessURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/business?limit=40`;
+    const businessData = await fetch(businessURL)
+        .then((response) => response.json());
+    const business = businessData.message;
+
     return {
-        props: { members }
+        props: { 'members': members, 'business': business }
     };
 };
 
@@ -61,4 +64,3 @@ export function getStaticPaths() {
     const paths = ['/lists/members', '/lists/business'];
     return { paths, fallback: false };
 }
-  

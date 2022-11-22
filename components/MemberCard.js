@@ -8,7 +8,8 @@ import Table from 'react-bootstrap/Table';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function MemberCard({ member}) {
+export default function MemberCard({ member }) {
+
     // Global Variables
     const [message, setMessage] = useState("הצג מספרי טלפון");
     const [phone_number, setPhoneNumber] = useState("");
