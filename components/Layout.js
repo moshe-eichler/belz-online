@@ -1,5 +1,5 @@
 import SideAdvertising from './SideAdvertising'
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import { BrowserView } from 'react-device-detect';
 
 export default function Layout({ children }) {
   return (

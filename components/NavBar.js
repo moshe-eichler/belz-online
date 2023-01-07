@@ -1,12 +1,12 @@
 import { React, useState } from "react";
 import Image from 'next/image';
-import { Navbar, Nav, Form, FormControl, Button, Container } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import styles from '../styles/Home.module.css';
 import BrandPic from '../public/logo-removebg-preview.png'
-import memberPic from '../public/icons8-user-male-30 (2).png'
-import briefcasePic from '../public/icons8-business-30 (2).png'
+// import memberPic from '../public/icons8-user-male-30 (2).png'
+// import briefcasePic from '../public/icons8-business-30 (2).png'
 import { useRouter } from 'next/router';
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import { BrowserView } from 'react-device-detect';
 
 export default function NavBar({ queryFunction, modalFunction, name }) {
   const [query, setQuery] = useState();
