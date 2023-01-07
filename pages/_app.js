@@ -5,7 +5,22 @@ import Layout from '../components/Layout';
 
 
 function MyApp({ Component, pageProps }) {
-  return(
+  // return (
+  //   <>
+  //     {router.pathname !== "/" ? (
+  //       <Layout>
+  //         <Component {...pageProps} />
+  //         <ToastContainer />
+  //       </Layout>
+  //     ) : (
+  //       <>
+  //         <Component {...pageProps} />
+  //         <ToastContainer />
+  //       </>
+  //     )}
+  //   </>
+  // );
+  return (
     <Layout>
       <Component {...pageProps} />
       <ToastContainer />

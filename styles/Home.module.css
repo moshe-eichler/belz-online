@@ -3,6 +3,16 @@
   margin-left: 1%;
 }
 
+/* Start NavBar style */
+.navBar {
+  background-color: orange !important;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  padding-left: 2%;
+  padding-right: 1%;
+}
+
 .search {
   text-align: center;
   max-width: 800px;
@@ -15,36 +25,51 @@
   width: 500px;
 }
 
-.navBar {
-  /* background: url("../public/silver-background1.jpeg") no-repeat; */
-  background-color: orange !important;
-  background-size: cover;
-  position: sticky;
-  top: 0px;
-  z-index: 1;
-  padding: 0px 10px 0px 10px;
-  height: 80px;
-}
-
-.logo {
-  position: relative;
-  margin-left: 150px;
-  margin-right: 60px;
-}
-
-.navLink,
-.navLink:visited,
-.navLink:hover {
+.navigationButton,
+.navigationButton:hover,
+.navigationButton:active,
+.navigationButton:visited,
+.navigationButton:focus {
+  margin: 1%;
+  white-space: nowrap;
   text-align: center;
-  font-size: x-large;
+  background-color: #F28500;
+  border-color: #F28500;
+  box-shadow: none;
   color: rgb(255, 255, 255);
-  /* margin: 10px; */
 }
 
+.searchButton,
+.searchButton:hover,
+.searchButton:active,
+.searchButton:visited,
+.searchButton:focus {
+  background-color: #F28500;
+  border-color: #F28500;
+  box-shadow: none;
+  color: rgb(255, 255, 255);
+}
+
+.updateMember,
+.updateMember:hover,
+.updateMember:active,
+.updateMember:visited,
+.updateMember:focus {
+  white-space: nowrap;
+  text-align: center;
+  margin-right: 10%;
+  background-color: #F28500;
+  border-color: #F28500;
+  box-shadow: none;
+  color: rgb(255, 255, 255);
+}
+/* End NavBar style */
+
+/* Start card member style */
 .card {
   text-align: center;
   float: right;
-  width: 22%;
+  width: 95%;
   height: 320px;
   overflow: auto;
   margin: 1.5%;
@@ -54,58 +79,19 @@
   background-color: #FFC55C !important;
 }
 
-/* Start section navbar items with pip */
-.flex {
-  position: relative;
-  margin: 1em;
-  overflow: hidden;
-}
-.flex-list ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-left: -1px;
-}
-.flex-list li {
-  flex-grow: 1;
-  flex-basis: auto;
-  margin: .25em 0;
-  padding: 0 1em;
-  text-align: center;
-  border-left: 1px solid #ccc;
-  background-color: #fff;
-}
-/* End section */
-
-
-.navigationItems {
-  background-color: #F28500;
-  border-color: #F28500;
-  box-shadow: none;
-  color: rgb(255, 255, 255);
-  height: 45px;
-  width: 130px;
-  border-radius: 5px;
-  text-align: center;
-  padding-top: auto;
-  cursor: pointer;
-}
-
-.navigationImage {
-  margin-top: 10%;
-}
-
-.updateMember,
-.updateMember:hover,
-.updateMember:active,
-.updateMember:visited,
-.updateMember:focus {
-  margin-left: 70px;
-  background-color: #F28500;
-  border-color: #F28500;
-  box-shadow: none;
-  color: rgb(255, 255, 255);
+@media (min-width:1000px) {
+  .card {
+    text-align: center;
+    float: right;
+    width: 22%;
+    height: 320px;
+    overflow: auto;
+    margin: 1.5%;
+    margin-top: 0;
+    padding: 0 !important;
+    color: rgb(95, 95, 95);
+    background-color: #FFC55C !important;
+  }
 }
 
 .showPhone,
@@ -118,6 +104,22 @@
   box-shadow: none;
   color: rgb(255, 255, 255);
 }
+
+.loader {
+  text-align: center;
+  bottom: 0;
+}
+
+.loaderSpin {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #F28500;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+/* End card member style */
 
 .modalHeader {
   background-color: orange;
@@ -139,21 +141,6 @@
   position: fixed;
   width: 250px;
   margin: 1.5%;
-}
-
-.loader {
-  text-align: center;
-  bottom: 0;
-}
-
-.loaderSpin {
-  border: 5px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 5px solid #F28500;
-  width: 40px;
-  height: 40px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
 }
 
 /* Safari */
