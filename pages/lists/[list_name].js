@@ -4,7 +4,6 @@ import NavBar from '../../components/NavBar';
 import VerticallyCenteredModal from '../../components/Modal';
 import BusinessModal from '../../components/BusinessModal';
 import Content from '../../components/Content';
-import Business from '../../components/BusinessList';
 import { useRouter } from 'next/router';
 
 export default function HomeTest(props) {
