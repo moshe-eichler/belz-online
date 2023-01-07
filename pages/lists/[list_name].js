@@ -36,7 +36,7 @@ export default function HomeTest(props) {
                         onHide={() => setModalShow(false)}
                     />
                     <div className="content">
-                        <Business data={props.business} filters={query} />
+                        <Content data={props.members} filters={query} modalFunction={setModalShow} />
                     </div>
                 </>
             )}
