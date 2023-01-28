@@ -13,7 +13,7 @@ export default function Business({ data, filters }) {
     const [noFound, setNoFound] = useState('');
 
     const getBusiness = async () => {
-        const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}api/members`);
+        const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}api/content?source=business_belz&limit=40`);
 
         const response = await fetch(url);
         const json_response = await response.json();
