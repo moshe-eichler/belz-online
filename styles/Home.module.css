@@ -6,10 +6,7 @@
 /* Start NavBar style */
 .navBar {
   background-color: orange !important;
-  position: sticky;
-  top: 0px;
-  z-index: 1;
-  padding-left: 2%;
+  padding-left: 1%;
   padding-right: 1%;
 }
 
@@ -50,18 +47,29 @@
   color: rgb(255, 255, 255);
 }
 
-.updateMember,
-.updateMember:hover,
-.updateMember:active,
-.updateMember:visited,
-.updateMember:focus {
-  white-space: nowrap;
-  text-align: center;
-  margin-right: 10%;
-  background-color: #F28500;
-  border-color: #F28500;
-  box-shadow: none;
-  color: rgb(255, 255, 255);
+.updateMember {
+  display: none;
+}
+
+@media (min-width:1000px) {
+  .updateMember,
+  .updateMember:hover,
+  .updateMember:active,
+  .updateMember:visited,
+  .updateMember:focus {
+    display: block;
+    white-space: nowrap;
+    text-align: center;
+    margin-right: 1%;
+    background-color: #F28500;
+    border-color: #F28500;
+    box-shadow: none;
+    color: rgb(255, 255, 255);
+  }
+}
+
+.collapsed {
+  color: green;
 }
 /* End NavBar style */
 
@@ -164,4 +172,14 @@
 .linkForm {
   padding: 0px !important;
   color: #F28500;
+}
+
+.advertising {
+  display: none;
+}
+
+@media (min-width:1000px) {
+  .advertising {
+    display: block;
+  }
 }

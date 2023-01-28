@@ -1,8 +1,8 @@
-import { Button, Modal, Container, Row, Col} from 'react-bootstrap';
+import { Button, Modal, Container, Row, Col } from 'react-bootstrap';
 import styles from '../styles/Home.module.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function VerticallyCenteredModal(props) {
+export default function MembersModal(props) {
     return (
         <>
             <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
@@ -16,40 +16,40 @@ export default function VerticallyCenteredModal(props) {
                         <Container>
                             <Row>
                                 <Col md={6}>
-                                    <input placeholder='שם פרטי' name='firstName' className='form-control' required/>
+                                    <input placeholder='שם פרטי' name='firstName' className='form-control' required />
                                 </Col>
                                 <Col md={6}>
-                                    <input placeholder='משפחה' name='familyName' className='form-control' required/>
+                                    <input placeholder='משפחה' name='familyName' className='form-control' required />
                                 </Col>
                             </Row>
                             <br />
                             <Row>
-                            <Col md={6}>
-                                    <input placeholder='רחוב' name='address' className='form-control' required/>
+                                <Col md={6}>
+                                    <input placeholder='רחוב' name='address' className='form-control' required />
                                 </Col>
                                 <Col md={2}>
-                                    <input placeholder='מס׳' name='number' className='form-control' required/>
+                                    <input placeholder='מס׳' name='number' className='form-control' required />
                                 </Col>
                                 <Col md={4}>
-                                    <input placeholder='עיר' name='city' className='form-control' required/>
+                                    <input placeholder='עיר' name='city' className='form-control' required />
                                 </Col>
                             </Row>
                             <br />
                             <Row>
                                 <Col md={6}>
-                                    <input placeholder='טלפון' name='phone' className='form-control' required/>
+                                    <input placeholder='טלפון' name='phone' className='form-control' required />
                                 </Col>
                                 <Col md={6}>
-                                    <input placeholder='טלפון נייד' name='cellphone' className='form-control' required/>
+                                    <input placeholder='טלפון נייד' name='cellphone' className='form-control' required />
                                 </Col>
                             </Row>
                             <br />
                             <Row>
                                 <Col md={6}>
-                                    <input placeholder='בן' name='father' className='form-control' required/>
+                                    <input placeholder='בן' name='father' className='form-control' required />
                                 </Col>
                                 <Col md={6}>
-                                    <input placeholder='חתן' name='fatherInLaw' className='form-control' required/>
+                                    <input placeholder='חתן' name='fatherInLaw' className='form-control' required />
                                 </Col>
                             </Row>
                         </Container>
@@ -60,7 +60,7 @@ export default function VerticallyCenteredModal(props) {
                     </Modal.Footer>
                 </form>
             </Modal>
-            <iframe name="votar" style={{display: 'none'}}></iframe> {/* https://stackoverflow.com/questions/2866063/submit-form-without-page-reloading#answer-26380651 */}
+            <iframe name="votar" style={{ display: 'none' }}></iframe> {/* https://stackoverflow.com/questions/2866063/submit-form-without-page-reloading#answer-26380651 */}
         </>
     );
 }

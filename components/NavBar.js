@@ -6,7 +6,7 @@ import BrandPic from '../public/logo-removebg-preview.png'
 // import memberPic from '../public/icons8-user-male-30 (2).png'
 // import briefcasePic from '../public/icons8-business-30 (2).png'
 import { useRouter } from 'next/router';
-import { BrowserView } from 'react-device-detect';
+import { style } from "@material-ui/system";
 
 export default function NavBar({ queryFunction, modalFunction, name }) {
   const [query, setQuery] = useState();
@@ -23,7 +23,7 @@ export default function NavBar({ queryFunction, modalFunction, name }) {
   }
 
   return (
-    <Navbar bg="light" expand="lg" className={[`shadow mb-5`, styles.navBar]}>
+    <Navbar sticky="top" bg="light" expand="lg" className={[`shadow mb-5`, styles.navBar]}>
       <Navbar.Brand className={styles.brand} href="/">
         <Image
           src={BrandPic}
@@ -34,7 +34,7 @@ export default function NavBar({ queryFunction, modalFunction, name }) {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+        <Nav className={[`me-auto`, style.collapsed]}>
           <Button onClick={() => goToPage('members')} className={styles.navigationButton}>
             {/* <Image
               src={memberPic}
@@ -64,11 +64,9 @@ export default function NavBar({ queryFunction, modalFunction, name }) {
         />
         <Button className={styles.searchButton} variant="outline-success" onClick={() => queryFunction(query)}>חפש</Button>
       </Form>
-      <BrowserView>
         <Button variant="primary" onClick={() => modalFunction(true)} className={styles.updateMember}>
           הוספת {name == 'members' ? 'איש קשר' : 'עסק'}
         </Button>
-      </BrowserView>
     </Navbar>
   )
 }

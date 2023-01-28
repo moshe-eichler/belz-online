@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Head from 'next/head';
 import NavBar from '../components/NavBar';
-import VerticallyCenteredModal from '../components/Modal';
-import Content from '../components/Content';
-import Business from '../components/BusinessList';
+import MembersModal from '../components/Modal';
+import Content from '../components/Members';
+import Business from '../components/Business';
 import { useRouter } from 'next/router';
 
 export default function Home(props) {
@@ -18,7 +18,7 @@ export default function Home(props) {
                 <title>רשימת אנ״ש</title>
             </Head>
             <NavBar queryFunction={setQuery} modalFunction={setModalShow} />
-            <VerticallyCenteredModal
+            <MembersModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />

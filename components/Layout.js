@@ -1,18 +1,19 @@
 import SideAdvertising from './SideAdvertising'
-import { BrowserView } from 'react-device-detect';
+import styles from '../styles/Home.module.css';
+
 
 export default function Layout({ children }) {
   return (
     <>
       <main>
-        <BrowserView>
+        <div className={styles.advertising}>
           <div className={`sideAdRight`}>
             <SideAdvertising side={'right'} />
           </div>
           <div className={`sideAdLeft`}>
             <SideAdvertising side={'left'} />
           </div>
-        </BrowserView>
+        </div>
         {children}
       </main>
     </>

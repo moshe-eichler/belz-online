@@ -8,18 +8,19 @@ export default function BusinessCard({ business }) {
         <>
             <Card className={`shadow p-3 mb-5 bg-white rounded ${styles.card}`}>
                 <CardBody className='bg-light'>
+                    <br />
                     <CardTitle>
-                        {/* <Avatar alt="business picture" src={business.picture} /> */}
                         <a href={business.site} target='_blank' rel="noreferrer">
-                            <Avatar name={business.name} src={business.picture} round={true} style={{cursor: 'pointer'}}/>
+                            <Avatar name={business.name} src={business.picture} round={true} style={{ cursor: 'pointer' }} />
                         </a>
                     </CardTitle>
+                    <br />
                     <CardText>
                         <span>{'שם העסק: ' + business.name}</span>
                         <br />
                         <span>{'כתובת: ' + (business.street || '') + ' ' + (business.number || '')}</span>
                         <br />
-                        <span>{business.city + ' - ' + business.stae}</span>
+                        <span>{business.city}</span>
                         <br />
                         <span>{'טלפון: ' + business.phone}</span>
                         <br />

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { CardDeck } from "reactstrap";
-import MemberCard from './MemberCard';
+import MemberCard from './MembersCard';
 import styles from '../styles/Home.module.css';
 
-export default function Content({ data, filters, modalFunction}) {
+export default function Members({ data, filters, modalFunction}) {
 
     const [members, setMembers] = useState(data);
     const [callNumber, setCallNumber] = useState(0);
@@ -12,7 +12,7 @@ export default function Content({ data, filters, modalFunction}) {
     const [noFound, setNoFound] = useState('');
 
     const getMembers = async () => { 
-        const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/api/members`);
+        const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/api/content?source=anash_belz`);
         url.searchParams.append('limit', 40);
         url.searchParams.append('skip', members.length);
         if (filters) url.searchParams.append('querySearch', filters);

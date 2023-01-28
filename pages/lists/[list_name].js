@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Head from 'next/head';
 import NavBar from '../../components/NavBar';
-import VerticallyCenteredModal from '../../components/Modal';
+import MembersModal from '../../components/MembersModal';
 import BusinessModal from '../../components/BusinessModal';
-import Content from '../../components/Content';
+import Members from '../../components/Members';
+import Business from '../../components/Business';
 import { useRouter } from 'next/router';
 
 export default function HomeTest(props) {
@@ -20,12 +21,12 @@ export default function HomeTest(props) {
             <NavBar queryFunction={setQuery} modalFunction={setModalShow} name={list_name} />
             {list_name == 'members' ? (
                 <>
-                    <VerticallyCenteredModal
+                    <MembersModal
                         show={modalShow}
                         onHide={() => setModalShow(false)}
                     />
                     <div className="content">
-                        <Content data={props.members} filters={query} modalFunction={setModalShow} />
+                        <Members data={props.members} filters={query} modalFunction={setModalShow} />
                     </div>
                 </>
             ) : (
@@ -35,7 +36,7 @@ export default function HomeTest(props) {
                         onHide={() => setModalShow(false)}
                     />
                     <div className="content">
-                        <Content data={props.members} filters={query} modalFunction={setModalShow} />
+                        <Business data={props.business} filters={query} />
                     </div>
                 </>
             )}
@@ -44,12 +45,12 @@ export default function HomeTest(props) {
 }
 
 export const getStaticProps = async () => {
-    const membersURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/members?limit=40`;
+    const membersURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/content?source=anash_belz&limit=40`;
     const membersData = await fetch(membersURL)
         .then((response) => response.json());
     const members = membersData.message;
 
-    const businessURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/business?limit=40`;
+    const businessURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/content?source=business_belz&limit=40`;
     const businessData = await fetch(businessURL)
         .then((response) => response.json());
     const business = businessData.message;
