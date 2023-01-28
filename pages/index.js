@@ -37,7 +37,7 @@ export default function Home(props) {
 }
 
 export const getStaticProps = async () => {
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/content?source=anash_belz&limit=40`
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/members?limit=40`
     const data = await fetch(url)
         .then((response) => response.json());
 

@@ -45,12 +45,12 @@ export default function HomeTest(props) {
 }
 
 export const getStaticProps = async () => {
-    const membersURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/content?source=anash_belz&limit=40`;
+    const membersURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/members?limit=40`;
     const membersData = await fetch(membersURL)
         .then((response) => response.json());
     const members = membersData.message;
 
-    const businessURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/content?source=business_belz&limit=40`;
+    const businessURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/members?limit=40`;
     const businessData = await fetch(businessURL)
         .then((response) => response.json());
     const business = businessData.message;
