@@ -6,7 +6,7 @@ export default function MembersModal(props) {
     return (
         <>
             <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
-                <form action="https://anash.vercel.app/api/contact?type=members" method="post" encType="multipart/form-data" onSubmit={props.onHide} target="votar">
+                <form action={`${process.env.NEXT_PUBLIC_BASE_URL}/api/contact?type=members`} method="post" encType="multipart/form-data" onSubmit={props.onHide} target="votar">
                     <Modal.Header closeButton className={styles.modalHeader}>
                         <Modal.Title id="contained-modal-title-vcenter">
                             עדכון/הוספת איש קשר
